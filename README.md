@@ -6,7 +6,7 @@
 </p>
 
 <ul>
-    <li>🔭 I’m currently working at NTT Data</li>
+    <li>🔭 I’m currently working at CoverWallet</li>
     <li>🌱 I’m currently learning Salesforce</li>
 </ul>
 
