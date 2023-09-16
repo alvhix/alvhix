@@ -1,0 +1,65 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import Article from '../../components/Article.astro';
+import SalesforceIcon, {
+  IconSize,
+  IconType,
+} from '../../components/SalesforceIcon.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main class="slds-brand-band slds-brand-band_large">
+      <div class="slds-grid slds-grid_align-center slds-wrap main">
+        <div
+          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+        >
+          <Article title="Posts" commentsEnabled={false}>
+            <span
+              slot="icon"
+              class="slds-icon_container slds-icon-standard-news"
+              title="posts"
+            >
+              <SalesforceIcon
+                icon="news"
+                type={IconType.STANDARD}
+                size={IconSize.SMALL}
+              />
+            </span>
+            <div slot="body">
+              <ul class="slds-grid slds-wrap slds-gutters">
+                {
+                  posts.map((post) => (
+                    <li class="slds-col slds-size_1-of-1 slds-large-size_6-of-12">
+                      <a href={`/blog/${post.slug}/`} class="slds-text-link">
+                        <img src={post.data.heroImage} alt="" />
+                        <h4 class="title">{post.data.title}</h4>
+                        <p class="date">
+                          <FormattedDate date={post.data.pubDate} />
+                        </p>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </Article>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

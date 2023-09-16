@@ -1,0 +1,74 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Article from '../components/Article.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import SalesforceIcon, {
+  IconSize,
+  IconType,
+} from '../components/SalesforceIcon.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main class="slds-brand-band slds-brand-band_large">
+      <div class="slds-grid slds-grid_align-center slds-wrap main">
+        <div
+          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+        >
+          <Article title={title} date={new Date()} commentsEnabled={true}>
+            <span
+              slot="icon"
+              class="slds-icon_container slds-icon-standard-post"
+              title="home"
+            >
+              <SalesforceIcon
+                icon="post"
+                type={IconType.STANDARD}
+                size={IconSize.SMALL}
+              />
+            </span>
+            <section slot="body">
+              {
+                heroImage && (
+                  <img
+                    width={1020}
+                    height={510}
+                    src={heroImage}
+                    alt="Blog image"
+                  />
+                )
+              }
+              <div class="title">
+                <div class="date">
+                  <FormattedDate date={pubDate} />
+                  {
+                    updatedDate && (
+                      <div class="last-updated-on">
+                        Last updated on <FormattedDate date={updatedDate} />
+                      </div>
+                    )
+                  }
+                </div>
+                <h1 class="slds-text-heading_large">{title}</h1>
+                <hr />
+              </div>
+              <slot />
+            </section>
+          </Article>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

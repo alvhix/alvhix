@@ -1,0 +1,39 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import SearchBar from './SearchBar.astro';
+---
+
+<style>
+  .navBar {
+    height: 3.75rem;
+    padding: 0 5%;
+  }
+</style>
+
+<header>
+  <div class="slds-context-bar navBar">
+    <nav
+      class="slds-context-bar__primary slds-align_absolute-center"
+      role="navigation"
+    >
+      <a href="/">
+        <div class="slds-global-header__logo" transition:animate="slide">
+          <span class="slds-assistive-text">Salesforce</span>
+        </div>
+      </a>
+    </nav>
+    <nav class="slds-context-bar__secondary" role="navigation">
+      <ul class="slds-grid">
+        <HeaderLink href="/" title="Home" icon="home" />
+        <HeaderLink href="/blog" title="Blog" icon="share_post" />
+        <HeaderLink href="/about" title="About" icon="user" />
+      </ul>
+    </nav>
+    <nav
+      class="slds-context-bar__secondary slds-align_absolute-center"
+      role="navigation"
+    >
+      <SearchBar />
+    </nav>
+  </div>
+</header>
