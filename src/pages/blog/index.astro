@@ -1,8 +1,4 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import Article from '../../components/Article.astro';
 import SalesforceIcon, {
   IconSize,
@@ -10,66 +6,50 @@ import SalesforceIcon, {
 } from '../../components/SalesforceIcon.astro';
 import FormattedDate from '../../components/FormattedDate.vue';
 import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
+const TITLE = 'Blog';
+const DESCRIPTION = 'All posts';
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main class="slds-brand-band slds-brand-band_large">
-      <div class="slds-grid slds-grid_align-center slds-wrap main">
-        <div
-          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
-        >
-          <Article title="Posts">
-            <span
-              slot="icon"
-              class="slds-icon_container slds-icon-standard-news"
-              title="posts"
-            >
-              <SalesforceIcon
-                icon="news"
-                type={IconType.STANDARD}
-                size={IconSize.SMALL}
-              />
-            </span>
-            <div slot="body">
-              <ul class="slds-grid slds-wrap">
-                {
-                  posts.map((post) => (
-                    <li class="slds-box slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-m-bottom_large">
-                      <a
-                        href={`/blog/${post.slug}/`}
-                        class="slds-text-link_reset"
-                      >
-                        <img
-                          src={post.data.heroImage}
-                          class="heroImage"
-                          alt={post.slug}
-                        />
-                        <hr />
-                        <h4 class="slds-text-heading_medium">
-                          {post.data.title}
-                        </h4>
-                        <span class="slds-text-body_small date">
-                          <FormattedDate date={post.data.pubDate} />
-                        </span>
-                      </a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </Article>
-        </div>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <Article title="Posts">
+    <span
+      slot="icon"
+      class="slds-icon_container slds-icon-standard-news"
+      title="posts"
+    >
+      <SalesforceIcon
+        icon="news"
+        type={IconType.STANDARD}
+        size={IconSize.SMALL}
+      />
+    </span>
+    <div slot="body">
+      <ul class="slds-grid slds-wrap">
+        {
+          posts.map((post) => (
+            <li class="slds-box slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-m-bottom_large">
+              <a href={`/blog/${post.slug}/`} class="slds-text-link_reset">
+                <img
+                  src={post.data.heroImage}
+                  class="heroImage"
+                  alt={post.slug}
+                />
+                <hr />
+                <h4 class="slds-text-heading_medium">{post.data.title}</h4>
+                <span class="slds-text-body_small date">
+                  <FormattedDate date={post.data.pubDate} />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </Article>
+</BaseLayout>
