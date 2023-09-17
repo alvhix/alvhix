@@ -1,11 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import SearchBar from './SearchBar.astro';
+import SearchBar from './SearchBar.vue';
+import SalesforceIcon, {IconType, IconSize} from './SalesforceIcon.astro';
 ---
 
 <style>
   .navBar {
-    height: 3.75rem;
+    height: 3.5rem;
     padding: 0 5%;
   }
 </style>
@@ -33,7 +34,22 @@ import SearchBar from './SearchBar.astro';
       class="slds-context-bar__secondary slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar />
+      <SearchBar client:load>
+        <div slot="search">
+          <SalesforceIcon
+          icon="search"
+          type={IconType.UTILITY}
+          size={IconSize.X_SMALL}
+          colored={true} />
+        </div>
+
+        <div slot="post">
+            <SalesforceIcon
+            icon="post"
+            type={IconType.STANDARD}
+            size={IconSize.X_SMALL} />
+        </div>
+      </SearchBar>
     </nav>
   </div>
 </header>

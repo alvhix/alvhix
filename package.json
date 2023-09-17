@@ -13,8 +13,11 @@
     "@astrojs/mdx": "^1.0.3",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/vue": "^3.0.0",
     "@salesforce-ux/design-system": "^2.22.0",
-    "astro": "^3.0.12"
+    "astro": "^3.0.12",
+    "fuse.js": "^6.6.2",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "prettier": "^3.0.3"
