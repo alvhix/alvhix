@@ -4,7 +4,6 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Article from '../components/Article.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
@@ -26,7 +25,12 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
         <div
           class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
         >
-          <Article title={title} date={new Date()} commentsEnabled={true}>
+          <Article
+            title={title}
+            pubDate={pubDate}
+            updatedDate={updatedDate}
+            commentsEnabled={true}
+          >
             <span
               slot="icon"
               class="slds-icon_container slds-icon-standard-post"
@@ -39,30 +43,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
               />
             </span>
             <section slot="body">
-              {
-                heroImage && (
-                  <img
-                    width={1020}
-                    height={510}
-                    src={heroImage}
-                    alt="Blog image"
-                  />
-                )
-              }
-              <div class="title">
-                <div class="date">
-                  <FormattedDate date={pubDate} />
-                  {
-                    updatedDate && (
-                      <div class="last-updated-on">
-                        Last updated on <FormattedDate date={updatedDate} />
-                      </div>
-                    )
-                  }
-                </div>
-                <h1 class="slds-text-heading_large">{title}</h1>
-                <hr />
-              </div>
+              {heroImage && <img src={heroImage} alt="Blog image" />}
               <slot />
             </section>
           </Article>

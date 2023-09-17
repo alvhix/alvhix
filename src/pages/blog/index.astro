@@ -8,7 +8,7 @@ import SalesforceIcon, {
   IconSize,
   IconType,
 } from '../../components/SalesforceIcon.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
+import FormattedDate from '../../components/FormattedDate.vue';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -27,7 +27,7 @@ const posts = (await getCollection('blog')).sort(
         <div
           class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
         >
-          <Article title="Posts" commentsEnabled={false}>
+          <Article title="Posts">
             <span
               slot="icon"
               class="slds-icon_container slds-icon-standard-news"

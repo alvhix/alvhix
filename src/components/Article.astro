@@ -1,11 +1,13 @@
 ---
+import FormattedDate from './FormattedDate.vue';
 interface Props {
   title: string;
-  date?: Date;
-  commentsEnabled: boolean;
+  pubDate?: Date;
+  updatedDate?: Date;
+  commentsEnabled?: boolean;
 }
 
-const { title, date, commentsEnabled } = Astro.props;
+const { title, pubDate, updatedDate, commentsEnabled = false } = Astro.props;
 ---
 
 <article class="slds-card">
@@ -19,12 +21,25 @@ const { title, date, commentsEnabled } = Astro.props;
           <div class="slds-media__body">
             <div class="slds-page-header__name">
               <div class="slds-page-header__name-title">
-                <h1 class="slds-page-header__title">
-                  {title}
-                </h1>
+                <h1 class="slds-page-header__title">{title}</h1>
               </div>
             </div>
-            {date && <p class="slds-page-header__name-meta">13 days ago</p>}
+            <div class="slds-grid slds-grid_align-spread">
+              {
+                pubDate && (
+                  <p class="slds-page-header__name-meta">
+                    Created: <FormattedDate date={pubDate} />
+                  </p>
+                )
+              }
+              {
+                updatedDate && (
+                  <p class="slds-page-header__name-meta">
+                    Updated: <FormattedDate date={updatedDate} />
+                  </p>
+                )
+              }
+            </div>
           </div>
         </div>
       </div>
@@ -63,6 +78,6 @@ const { title, date, commentsEnabled } = Astro.props;
 <style>
   section.slds-card__body {
     text-align: justify;
-    font-size: 125%;
+    font-size: 120%;
   }
 </style>

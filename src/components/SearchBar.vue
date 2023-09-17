@@ -29,7 +29,7 @@
                                             {{ result.data.title }}
                                         </span>
                                         <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
-                                            {{ result.data.pubDate }}
+                                            <FormattedDate :date=result.data.pubDate></FormattedDate>
                                         </span>
                                     </span>
                                 </div>
@@ -43,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+import FormattedDate from './FormattedDate.vue'
 import { getCollection } from 'astro:content';
 import Fuse from 'fuse.js';
 import { ref } from 'vue'
