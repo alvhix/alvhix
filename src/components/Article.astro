@@ -21,7 +21,9 @@ const { title, pubDate, updatedDate, commentsEnabled = false } = Astro.props;
           <div class="slds-media__body">
             <div class="slds-page-header__name">
               <div class="slds-page-header__name-title">
-                <h1 class="slds-page-header__title">{title}</h1>
+                <h1 class="slds-page-header__title slds-text-heading_medium">
+                  {title}
+                </h1>
               </div>
             </div>
             <div class="slds-grid slds-grid_align-spread">
@@ -75,9 +77,12 @@ const { title, pubDate, updatedDate, commentsEnabled = false } = Astro.props;
   </footer>
 </article>
 
-<style>
+<style is:global>
   section.slds-card__body {
     text-align: justify;
-    font-size: 120%;
+    font-size: 125%;
+  }
+  img.heroImage {
+    border-radius: 5px;
   }
 </style>

@@ -43,7 +43,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
               />
             </span>
             <section slot="body">
-              {heroImage && <img src={heroImage} alt="Blog image" />}
+              {
+                heroImage && (
+                  <img
+                    class="slds-align_absolute-center heroImage"
+                    src={heroImage}
+                    alt="Blog image"
+                  />
+                )
+              }
+              <hr />
               <slot />
             </section>
           </Article>

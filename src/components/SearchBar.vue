@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-form-element">
+    <div class="slds-form-element slds-size_3-of-6">
         <div class="slds-form-element__control">
             <div class="slds-combobox_container">
                 <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -9,30 +9,32 @@
                             class="slds-input slds-combobox__input" aria-autocomplete="list" aria-controls="listbox-id-1"
                             aria-expanded="false" aria-haspopup="listbox" autocomplete="off" role="combobox" />
                         <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
-                            <slot name="search"></slot>
+                            <slot name="search" />
                         </span>
                     </div>
                     <div class="slds-dropdown slds-dropdown_length-with-icon-3 slds-dropdown_fluid" role="listbox"
-                        aria-label="{{Placeholder for Dropdown Items}}" tabindex="0" aria-busy="false">
+                        tabindex="0" aria-busy="false">
                         <ul class="slds-listbox slds-listbox_vertical" role="presentation">
-                            <li v-for="result in results" data-search-item role="presentation" class="slds-listbox__item">
-                                <div id="option229"
-                                    class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
-                                    role="option">
-                                    <span class="slds-media__figure slds-listbox__option-icon">
-                                        <span class="slds-icon_container slds-icon-standard-post">
-                                            <slot name="post"></slot>
+                            <li v-for="result in results" role="presentation" class="slds-listbox__item">
+                                <a :href="`/blog/${result.slug}/`" class="slds-text-link_reset" data-result-item>
+                                    <div :id="result.id"
+                                        class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
+                                        role="option">
+                                        <span class="slds-media__figure slds-listbox__option-icon">
+                                            <span class="slds-icon_container slds-icon-standard-post">
+                                                <slot name="post" />
+                                            </span>
                                         </span>
-                                    </span>
-                                    <span class="slds-media__body">
-                                        <span class="slds-listbox__option-text slds-listbox__option-text_entity">
-                                            {{ result.data.title }}
+                                        <span class="slds-media__body">
+                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                {{ result.data.title }}
+                                            </span>
+                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                                <FormattedDate :date=result.data.pubDate></FormattedDate>
+                                            </span>
                                         </span>
-                                        <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
-                                            <FormattedDate :date=result.data.pubDate></FormattedDate>
-                                        </span>
-                                    </span>
-                                </div>
+                                    </div>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -48,8 +50,8 @@ import { getCollection } from 'astro:content';
 import Fuse from 'fuse.js';
 import { ref } from 'vue'
 
-const maxNumberOfResults = 3;
-const fuseOptions = {
+const maxNumberOfResults: number = 5;
+const fuseOptions: {} = {
     minMatchCharLength: 2,
     threshold: 0.5,
     keys: ['data.title', 'body'],
@@ -68,18 +70,26 @@ const fuseOptions = {
 const posts = (await getCollection('blog')).sort(
     (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
-const fuse = new Fuse(posts, fuseOptions);
+const fuse: Fuse<any> = new Fuse(posts, fuseOptions);
 const results: any = ref([]);
 
 function handleSearch(event: Event) {
-    const inputElement: HTMLInputElement = event.target as HTMLInputElement;
+    const inputElement: HTMLInputElement = <HTMLInputElement>event.target;
     results.value = query(inputElement.value);
     console.log(results.value);
 }
 
 function closeSearch(event: Event) {
+    const mouseEvent: MouseEvent = <MouseEvent>event;
+    const relatedTarget: HTMLElement = <HTMLElement>mouseEvent?.relatedTarget;
+
+    if (relatedTarget && relatedTarget.matches('a[data-result-item]')) {
+        return;
+    }
+
     results.value = [];
 }
+
 
 function query(searchPattern: string): {}[] {
     return fuse

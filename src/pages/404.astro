@@ -1,0 +1,45 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Article from '../components/Article.astro';
+import SalesforceIcon, {
+  IconSize,
+  IconType,
+} from '../components/SalesforceIcon.astro';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main class="slds-brand-band slds-brand-band_group main">
+      <div class="slds-grid slds-grid_align-center slds-wrap">
+        <div
+          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+        >
+          <Article title="Page not found">
+            <span
+              slot="icon"
+              class="slds-icon_container slds-icon-standard-home"
+              title="home"
+            >
+              <SalesforceIcon
+                icon="first_non_empty"
+                type={IconType.STANDARD}
+                size={IconSize.SMALL}
+              />
+            </span>
+            <div slot="body">
+              <h1>Page not found</h1>
+            </div>
+          </Article>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
