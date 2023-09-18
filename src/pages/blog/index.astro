@@ -4,9 +4,9 @@ import SalesforceIcon, {
   IconSize,
   IconType,
 } from '../../components/SalesforceIcon.astro';
-import FormattedDate from '../../components/FormattedDate.vue';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tile from '../../components/Tile.astro';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -40,11 +40,14 @@ const DESCRIPTION = 'All posts';
                   class="heroImage"
                   alt={post.slug}
                 />
+
                 <hr />
-                <h4 class="slds-text-heading_medium">{post.data.title}</h4>
-                <span class="slds-text-body_small date">
-                  <FormattedDate date={post.data.pubDate} />
-                </span>
+
+                <Tile
+                  title={post.data.title}
+                  pubDate={post.data.pubDate}
+                  tags={post.data.tags}
+                />
               </a>
             </li>
           ))

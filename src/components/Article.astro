@@ -2,12 +2,10 @@
 import FormattedDate from './FormattedDate.vue';
 interface Props {
   title: string;
-  pubDate?: Date;
-  updatedDate?: Date;
   commentsEnabled?: boolean;
 }
 
-const { title, pubDate, updatedDate, commentsEnabled = false } = Astro.props;
+const { title, commentsEnabled = false } = Astro.props;
 ---
 
 <article class="slds-card">
@@ -26,22 +24,7 @@ const { title, pubDate, updatedDate, commentsEnabled = false } = Astro.props;
                 </h1>
               </div>
             </div>
-            <div class="slds-grid slds-grid_align-spread">
-              {
-                pubDate && (
-                  <p class="slds-page-header__name-meta">
-                    Created: <FormattedDate date={pubDate} />
-                  </p>
-                )
-              }
-              {
-                updatedDate && (
-                  <p class="slds-page-header__name-meta">
-                    Updated: <FormattedDate date={updatedDate} />
-                  </p>
-                )
-              }
-            </div>
+            <slot name="tile" />
           </div>
         </div>
       </div>

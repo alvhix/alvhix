@@ -26,12 +26,14 @@
                                             </span>
                                         </span>
                                         <span class="slds-media__body">
-                                            <span class="slds-listbox__option-text slds-listbox__option-text_entity">
-                                                {{ result.data.title }}
-                                            </span>
-                                            <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
-                                                <FormattedDate :date=result.data.pubDate></FormattedDate>
-                                            </span>
+                                            <article class="slds-tile">
+                                                <h3 class="slds-tile__title slds-truncate" :title="result.data.title">
+                                                    {{ result.data.title }}
+                                                </h3>
+                                                <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                                    <FormattedDate :date=result.data.pubDate></FormattedDate>
+                                                </span>
+                                            </article>
                                         </span>
                                     </div>
                                 </a>
