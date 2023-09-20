@@ -1,0 +1,41 @@
+---
+import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  icon: string;
+}
+const { href, title, icon } = Astro.props;
+
+const { pathname } = Astro.url;
+const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+---
+
+<li class:list={['slds-context-bar__item', { 'slds-is-active': isActive }]}>
+  <a
+    href={href}
+    class="slds-context-bar__label-action slds-text-heading_x-small"
+    title={title}
+    role="tab"
+    aria-selected={isActive}
+  >
+    <div class="slds-media slds-media_center">
+      <div class="slds-media__figure">
+        <span class="slds-avatar slds-avatar_x-small">
+          <span class="slds-icon_container" title={title}>
+            <SalesforceIcon
+              icon={icon}
+              type={IconType.UTILITY}
+              size={IconSize.X_SMALL}
+              colored={true}
+            />
+          </span>
+        </span>
+      </div>
+      <div class="slds-media__body">
+        <span class="slds-text-title_caps" title={title}>{title}</span>
+      </div>
+    </div>
+  </a>
+</li>

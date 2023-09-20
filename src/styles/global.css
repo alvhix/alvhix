@@ -1,0 +1,75 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+pre,
+code,
+b,
+strong,
+blockquote {
+    all: revert;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 2em !important;
+}
+
+h2 {
+    font-size: 1.5em !important;
+}
+
+h3 {
+    font-size: 1.17em !important;
+}
+
+h4 {
+    font-size: 1em !important;
+}
+
+h5 {
+    font-size: 0.83em !important;
+}
+
+h6 {
+    font-size: 0.67em !important;
+}
+
+dt,
+dd {
+    font-size: 0.75rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    text-align: justify;
+}
+
+pre {
+    padding: .8em 1.15em;
+    border-radius: 5px;
+}
+
+
+.main {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}

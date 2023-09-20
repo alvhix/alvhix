@@ -1,0 +1,17 @@
+---
+interface Props {
+  type: IconType;
+}
+
+const { type } = Astro.props;
+
+export enum IconType {
+  TRAILHEAD = 'salesforce.svg',
+  TWITTER = 'twitter.svg',
+  GITHUB = 'github.svg',
+}
+---
+
+<span class="slds-icon">
+  <img src={`/svg/${type}`} alt={type.replace('.svg', '')} />
+</span>

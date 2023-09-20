@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Article from '../components/Article.astro';
+import Footer from '../components/Footer.astro';
+import SalesforceIcon, {
+  IconSize,
+  IconType,
+} from '../components/SalesforceIcon.astro';
+import Tile from '../components/Tile.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, tags } =
+  Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body>
+    <Header />
+    <main class="slds-brand-band slds-brand-band_large">
+      <div class="slds-grid slds-grid_align-center slds-wrap main">
+        <div
+          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+        >
+          <Article title={title} commentsEnabled={true}>
+            <span
+              slot="icon"
+              class="slds-icon_container slds-icon-standard-post"
+              title="home"
+            >
+              <SalesforceIcon
+                icon="post"
+                type={IconType.STANDARD}
+                size={IconSize.SMALL}
+              />
+            </span>
+            <section slot="body">
+              {
+                heroImage && (
+                  <img
+                    class="slds-align_absolute-center heroImage"
+                    src={heroImage}
+                    alt="Blog image"
+                  />
+                )
+              }
+              <hr />
+              <slot />
+            </section>
+            <Tile
+              slot="tile"
+              pubDate={pubDate}
+              updatedDate={updatedDate}
+              tags={tags}
+            />
+          </Article>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

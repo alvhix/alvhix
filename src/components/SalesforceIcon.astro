@@ -1,0 +1,33 @@
+---
+interface Props {
+  icon: string;
+  type: IconType;
+  size: IconSize;
+  colored?: boolean;
+}
+
+export enum IconType {
+  STANDARD = 'standard',
+  UTILITY = 'utility',
+}
+
+export enum IconSize {
+  XX_SMALL = 'xx-small',
+  X_SMALL = 'x-small',
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
+}
+
+const { icon, type, size, colored = false } = Astro.props;
+---
+
+<svg
+  class={`slds-icon slds-icon_${size} ${
+    colored ? 'slds-icon-text-default' : ''
+  }`}
+  aria-hidden="true"
+>
+  <use xlink:href={`/svg/${type}.svg#${icon}`}></use>
+</svg>
+<span class="slds-assistive-text">{icon}</span>

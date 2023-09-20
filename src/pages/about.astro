@@ -1,0 +1,30 @@
+---
+import Article from '../components/Article.astro';
+import SalesforceIcon, {
+  IconType,
+  IconSize,
+} from '../components/SalesforceIcon.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const TITLE = 'About';
+const DESCRIPTION = 'About Alvhix blog';
+---
+
+<BaseLayout title={TITLE} description={DESCRIPTION}>
+  <Article title="Alvhix blog">
+    <span
+      slot="icon"
+      class="slds-icon_container slds-icon-standard-user"
+      title="user"
+    >
+      <SalesforceIcon
+        icon="user"
+        type={IconType.STANDARD}
+        size={IconSize.SMALL}
+      />
+    </span>
+    <div slot="body">
+      <p>About me</p>
+    </div>
+  </Article>
+</BaseLayout>

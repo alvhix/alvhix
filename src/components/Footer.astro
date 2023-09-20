@@ -1,0 +1,31 @@
+---
+import Icon, { IconType } from './Icon.astro';
+const today = new Date();
+---
+
+<footer class="slds-card footer">
+  <div class="slds-card__body slds-card__body_inner">
+    <ul class="slds-grid slds-grid_align-center slds-gutters_x-small">
+      <li class="slds-col">
+        <a href="https://trailblazer.me/id/alvhix" target="_blank">
+          <Icon type={IconType.TRAILHEAD} />
+        </a>
+      </li>
+      <li class="slds-col">
+        <a href="https://twitter.com/alvhix" target="_blank">
+          <Icon type={IconType.TWITTER} />
+        </a>
+      </li>
+      <li class="slds-col">
+        <a href="https://github.com/alvhix" target="_blank">
+          <Icon type={IconType.GITHUB} />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="slds-card__footer">
+    <p class="slds-text-align_center">
+      <span>&copy; {today.getFullYear()} Alvhix. All rights reserved.</span>
+    </p>
+  </div>
+</footer>
