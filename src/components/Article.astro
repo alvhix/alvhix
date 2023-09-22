@@ -60,8 +60,12 @@ const { title, commentsEnabled = false } = Astro.props;
   </footer>
 </article>
 
-<style>
+<style is:inline>
   section.slds-card__body {
     font-size: 120%;
+  }
+
+  p {
+    all: revert;
   }
 </style>
