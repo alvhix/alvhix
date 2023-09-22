@@ -1,14 +1,15 @@
 ---
 interface Props {
-  type: IconType;
+  type: IconName;
 }
 
 const { type } = Astro.props;
 
-export enum IconType {
+export enum IconName {
   TRAILHEAD = 'salesforce.svg',
   TWITTER = 'twitter.svg',
   GITHUB = 'github.svg',
+  RSS = 'rss.svg',
 }
 ---
 
