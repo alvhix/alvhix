@@ -7,9 +7,10 @@ import SalesforceIcon, {
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Tile from '../../components/Tile.astro';
+import SearchBar from '../../components/SearchBar.vue';
 
 const posts = (await getCollection('blog')).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const TITLE = 'Blog';
@@ -32,8 +33,14 @@ const DESCRIPTION = 'All posts';
     <div slot="body">
       <ul class="slds-grid slds-wrap">
         {
-          posts.map((post) => (
-            <li class="slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-p-around_xx-small">
+          posts.map((post, index) => (
+            <li
+              class:list={[
+                'slds-col slds-size_1-of-1 slds-large-size_6-of-12 slds-p-bottom_x-small',
+                { 'slds-p-right_xx-small': index % 2 === 0 },
+                { 'slds-p-left_xx-small': index % 2 !== 0 },
+              ]}
+            >
               <div class="slds-box">
                 <a href={`/blog/${post.slug}/`} class="slds-text-link_reset">
                   <img
@@ -58,3 +65,15 @@ const DESCRIPTION = 'All posts';
     </div>
   </Article>
 </BaseLayout>
+
+<style>
+  .slds-box {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .slds-box:hover {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+    transition-delay: 0.2s;
+  }
+</style>
