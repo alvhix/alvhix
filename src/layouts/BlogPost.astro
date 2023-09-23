@@ -1,9 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
 import Article from '../components/Article.astro';
-import Footer from '../components/Footer.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
@@ -18,7 +15,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 ---
 
 <BaseLayout title={title} description={description}>
-  <Article title={title} commentsEnabled={true}>
+  <Article title={title} description={description} commentsEnabled={true}>
     <span
       slot="icon"
       class="slds-icon_container slds-icon-standard-post"
@@ -34,15 +31,15 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
       {
         heroImage && (
           <img
-            class="slds-align_absolute-center heroImage"
+            class="slds-align_absolute-center slds-m-bottom_large heroImage"
             src={heroImage}
             alt="Blog image"
           />
         )
       }
+      <Tile pubDate={pubDate} updatedDate={updatedDate} tags={tags} />
       <hr />
       <slot />
     </section>
-    <Tile slot="tile" pubDate={pubDate} updatedDate={updatedDate} tags={tags} />
   </Article>
 </BaseLayout>

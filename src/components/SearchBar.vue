@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-form-element slds-size_3-of-6">
+    <div class="slds-form-element slds-size_4-of-6">
         <div class="slds-form-element__control">
             <div class="slds-combobox_container">
                 <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
