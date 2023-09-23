@@ -3,7 +3,7 @@ title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 updatedDate: 'Jul 13 2022'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: '/blog/blog-placeholder-3.jpg'
 tags:
   - 'first'
 ---
