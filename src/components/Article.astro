@@ -60,12 +60,12 @@ const { title, commentsEnabled = false } = Astro.props;
   </footer>
 </article>
 
-<style is:global>
+<style is:inline>
   section.slds-card__body {
-    text-align: justify;
-    font-size: 125%;
+    font-size: 120%;
   }
-  img.heroImage {
-    border-radius: 5px;
+
+  p {
+    all: revert;
   }
 </style>
