@@ -78,7 +78,6 @@ const results: any = ref([]);
 function handleSearch(event: Event) {
     const inputElement: HTMLInputElement = <HTMLInputElement>event.target;
     results.value = query(inputElement.value);
-    console.log(results.value);
 }
 
 function closeSearch(event: Event) {
