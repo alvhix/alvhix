@@ -1,7 +1,5 @@
 <template>
-    <button v-for="tag in tags" class="slds-button">
-        <span :data-tag=tag @click="filterPostsByTag" class="slds-badge">#{{ tag }}</span>
-    </button>
+    <span v-for="tag in tags" :data-tag=tag @click="filterPostsByTag" class="slds-badge">#{{ tag }}</span>
 </template>
 
 <script setup>
@@ -28,7 +26,7 @@ const triggerSelection = (tagNode) => {
 
 
 <style scoped>
-button {
-    border-radius: var(--slds-c-badge-radius-border, var(--sds-c-badge-radius-border, 15rem))
+span.slds-badge {
+    cursor: pointer;
 }
 </style>

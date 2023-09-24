@@ -27,19 +27,15 @@ onMounted(async () => {
 
 const getPostsByTag = async (tag) => {
     const activeTags = retrieveActiveTags();
-    const result = [];
 
-    if (activeTags.length === 0) {
-        const allPosts = await getCollection('blog');
-        result.push(...allPosts);
-    } else {
-        const filteredPosts = await getCollection('blog', ({ data }) => {
+    const hasActiveTags = activeTags.length === 0;
+    const result = hasActiveTags ?
+        await getCollection('blog') :
+        await getCollection('blog', ({ data }) => {
             return activeTags.every(activeTag => data.tags.includes(activeTag));
         });
-        result.push(...filteredPosts);
-    }
 
-    posts.value = sortPosts(result);
+    posts.value = sortPosts([...result]);
 };
 
 const sortPosts = (posts) => {
@@ -49,13 +45,11 @@ const sortPosts = (posts) => {
 }
 
 const retrieveActiveTags = () => {
-    const tags = document.querySelector('div.tags');
+    const tags = document.querySelectorAll('div.tags>span');
     const activeTags = [];
 
-    for (const tag of tags.childNodes) {
-        const span = tag.childNodes[0];
-
-        if (span && span.classList.contains('slds-badge_inverse')) {
+    for (const span of tags) {
+        if (span.classList.contains('slds-badge_inverse')) {
             activeTags.push(span.dataset.tag);
         }
     }
