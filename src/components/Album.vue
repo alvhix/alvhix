@@ -15,13 +15,16 @@ import { getCollection } from 'astro:content';
 import Tags from './Tags.vue';
 import PostCard from './PostCard.vue';
 import { onMounted, ref } from 'vue';
+import { sortByDescendingPubDate } from '../scripts/global';
 
 const posts = ref([]);
 const tags = ref([]);
 
 onMounted(async () => {
-    const fetchedPosts = await getCollection('blog');
-    posts.value = sortPosts(fetchedPosts);
+    const fetchedPosts = await getCollection('blog', (post) => {
+        return !post.data.draft;
+    });
+    posts.value = sortByDescendingPubDate(fetchedPosts);
     tags.value = [...new Set(posts.value.flatMap((post) => post.data.tags))];
 });
 
@@ -32,17 +35,12 @@ const getPostsByTag = async (tag) => {
     const result = hasActiveTags ?
         await getCollection('blog') :
         await getCollection('blog', ({ data }) => {
-            return activeTags.every(activeTag => data.tags.includes(activeTag));
+            return !data.draft &&
+                activeTags.every(activeTag => data.tags.includes(activeTag));
         });
 
-    posts.value = sortPosts([...result]);
+    posts.value = sortByDescendingPubDate([...result]);
 };
-
-const sortPosts = (posts) => {
-    return posts.sort(
-        (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-    );
-}
 
 const retrieveActiveTags = () => {
     const tags = document.querySelectorAll('div.tags>span');

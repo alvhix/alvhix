@@ -34,8 +34,8 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       class="slds-context-bar__secondary slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar client:load>
-        <div slot="search">
+      <SearchBar client:load size={4} dropdown-enabled={true}>
+        <div slot="search-icon">
           <SalesforceIcon
             icon="search"
             type={IconType.UTILITY}
@@ -44,7 +44,7 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
           />
         </div>
 
-        <div slot="post">
+        <div slot="post-icon">
           <SalesforceIcon
             icon="post"
             type={IconType.STANDARD}

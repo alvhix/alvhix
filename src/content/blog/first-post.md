@@ -4,6 +4,7 @@ description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 updatedDate: 'Jul 13 2022'
 heroImage: '/images/blog-placeholder-3.jpg'
+draft: false
 tags:
   - 'first'
 ---

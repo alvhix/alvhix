@@ -3,6 +3,7 @@ title: 'Second post'
 description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 22 2022'
 heroImage: '/images/blog-placeholder-4.jpg'
+draft: false
 tags:
   - 'second'
 ---

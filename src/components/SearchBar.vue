@@ -1,5 +1,5 @@
 <template>
-    <div class="slds-form-element slds-size_4-of-6">
+    <div :class="`slds-form-element slds-size_${props.size}-of-6`">
         <div class="slds-form-element__control">
             <div class="slds-combobox_container">
                 <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -9,10 +9,11 @@
                             class="slds-input slds-combobox__input" aria-autocomplete="list" aria-controls="listbox-id-1"
                             aria-expanded="false" aria-haspopup="listbox" autocomplete="off" role="combobox" />
                         <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
-                            <slot name="search" />
+                            <slot name="search-icon" />
                         </span>
                     </div>
-                    <div class="slds-dropdown slds-dropdown_length-with-icon-3 slds-dropdown_fluid" role="listbox"
+                    <div v-if="props.dropdownEnabled"
+                        class="slds-dropdown slds-dropdown_length-with-icon-3 slds-dropdown_fluid" role="listbox"
                         tabindex="0" aria-busy="false">
                         <ul class="slds-listbox slds-listbox_vertical" role="presentation">
                             <li v-for="result in results" role="presentation" class="slds-listbox__item">
@@ -22,7 +23,7 @@
                                         role="option">
                                         <span class="slds-media__figure slds-listbox__option-icon">
                                             <span class="slds-icon_container slds-icon-standard-post">
-                                                <slot name="post" />
+                                                <slot name="post-icon" />
                                             </span>
                                         </span>
                                         <span class="slds-media__body">
@@ -51,7 +52,9 @@ import FormattedDate from './FormattedDate.vue'
 import { getCollection } from 'astro:content';
 import Fuse from 'fuse.js';
 import { ref } from 'vue'
+import { sortByDescendingPubDate } from '../scripts/global';
 
+const props = defineProps({ size: Number, dropdownEnabled: Boolean });
 const maxNumberOfResults: number = 5;
 const fuseOptions: {} = {
     minMatchCharLength: 2,
@@ -69,9 +72,10 @@ const fuseOptions: {} = {
     // ignoreFieldNorm: false,
     // fieldNormWeight: 1,
 };
-const posts = (await getCollection('blog')).sort(
-    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const posts = sortByDescendingPubDate(await getCollection('blog', (post) => {
+    return !post.data.draft;
+}));
+
 const fuse: Fuse<any> = new Fuse(posts, fuseOptions);
 const results: any = ref([]);
 
