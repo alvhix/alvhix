@@ -28,5 +28,10 @@ const triggerSelection = (tagNode) => {
 <style scoped>
 span.slds-badge {
     cursor: pointer;
+    border: 1px dashed black;
+}
+
+span.slds-badge.slds-badge_inverse {
+    border: 1px dashed white;
 }
 </style>
