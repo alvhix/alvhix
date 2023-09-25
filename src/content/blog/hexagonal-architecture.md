@@ -1,11 +1,11 @@
 ---
-title: 'Fourth post'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: 'Hexagonal architecture in Salesforce'
+description: 'Discover how to manage software complexity that allow to scale'
+pubDate: 'Jul 08 2023'
 heroImage: '/images/blog-placeholder-3.jpg'
-draft: false
 tags:
-  - 'fourth'
+  - 'salesforce'
+  - 'architecture'
 ---
 
 Here are some rules/recommendations, tips & ticks for creating new posts in AstroPaper blog theme.
