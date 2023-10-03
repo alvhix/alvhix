@@ -1,6 +1,6 @@
 <template>
     <span v-for="tag in tags" :data-tag=tag @click="filterPostsByTag"
-        class="slds-badge slds-m-right_x-small slds-m-bottom_x-small">#{{ tag
+        class="slds-badge slds-m-right_x-small slds-m-bottom_xx-small">#{{ tag
         }}</span>
 </template>
 
