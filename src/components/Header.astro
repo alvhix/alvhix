@@ -48,6 +48,29 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       </SearchBar>
     </nav>
     <nav
+      class="slds-context-bar__secondary slds-hide_medium slds-align_absolute-center slds-col slds-col-size_10_of_12"
+      role="navigation"
+    >
+      <SearchBar client:load size={4} dropdown-enabled={true}>
+        <div slot="search-icon">
+          <SalesforceIcon
+            icon="search"
+            type={IconType.UTILITY}
+            size={IconSize.X_SMALL}
+            colored={true}
+          />
+        </div>
+
+        <div slot="post-icon">
+          <SalesforceIcon
+            icon="post"
+            type={IconType.STANDARD}
+            size={IconSize.X_SMALL}
+          />
+        </div>
+      </SearchBar>
+    </nav>
+    <nav
       class="slds-context-bar__secondary slds-hide_medium slds-grid_align-end"
       role="navigation"
       transition:persist
@@ -78,7 +101,10 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       </div>
     </nav>
   </div>
-  <div data-mobile-menu-bar class="slds-tabs-mobile__container slds-hide">
+  <div
+    data-mobile-menu-bar
+    class="slds-tabs-mobile__container slds-hide slds-hide_medium"
+  >
     <ul class="slds-tabs-mobile">
       <HeaderLinkMobile href="/" title="Home" icon="home" />
       <HeaderLinkMobile href="/blog" title="Blog" icon="share_post" />
@@ -95,6 +121,10 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
 
   .slds-global-header__logo {
     width: 7.5rem;
+  }
+
+  .slds-tabs-mobile__container {
+    outline: 2px solid #1b96ff;
   }
 </style>
 
