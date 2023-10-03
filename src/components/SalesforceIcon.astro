@@ -20,14 +20,16 @@ export enum IconSize {
 }
 
 const { icon, type, size, colored = false } = Astro.props;
+const title = `${icon} ${type} icon`;
 ---
 
 <svg
   class={`slds-icon slds-icon_${size} ${
     colored ? 'slds-icon-text-default' : ''
   }`}
+  title={title}
   aria-hidden="true"
 >
   <use xlink:href={`/svg/${type}.svg#${icon}`}></use>
 </svg>
-<span class="slds-assistive-text">{icon}</span>
+<span class="slds-assistive-text">{icon + ' icon'}</span>

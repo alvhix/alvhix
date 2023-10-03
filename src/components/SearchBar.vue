@@ -1,5 +1,5 @@
 <template>
-    <div :class="`slds-form-element slds-size_${props.size}-of-6`">
+    <div :class="`slds-form-element slds-large-size_${props.size}-of-6 slds-medium-size_${props.size + 1}-of-6`">
         <div class="slds-form-element__control">
             <div class="slds-combobox_container">
                 <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
@@ -54,7 +54,7 @@ import Fuse from 'fuse.js';
 import { ref } from 'vue'
 import { sortByDescendingPubDate } from '../scripts/global';
 
-const props = defineProps({ size: Number, dropdownEnabled: Boolean });
+const props = defineProps({ size: { type: Number, required: true }, dropdownEnabled: Boolean });
 const maxNumberOfResults: number = 5;
 const fuseOptions: {} = {
     minMatchCharLength: 2,
