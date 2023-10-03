@@ -1,5 +1,7 @@
 <template>
-    <span v-for="tag in tags" :data-tag=tag @click="filterPostsByTag" class="slds-badge">#{{ tag }}</span>
+    <span v-for="tag in tags" :data-tag=tag @click="filterPostsByTag"
+        class="slds-badge slds-m-right_x-small slds-m-bottom_x-small">#{{ tag
+        }}</span>
 </template>
 
 <script setup>
@@ -32,5 +34,9 @@ span.slds-badge {
 
 span.slds-badge.slds-badge_inverse {
     border: 1px dashed white;
+}
+
+.slds-badge+.slds-badge {
+    margin-left: 0;
 }
 </style>
