@@ -1,15 +1,9 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import HeaderLinkMobile from './HeaderLinkMobile.astro';
 import SearchBar from './SearchBar.vue';
 import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
 ---
-
-<style>
-  .navBar {
-    height: 3.5rem;
-    padding: 0 5%;
-  }
-</style>
 
 <header class="header">
   <div class="slds-context-bar navBar">
@@ -23,7 +17,7 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
         </div>
       </a>
     </nav>
-    <nav class="slds-context-bar__secondary" role="navigation">
+    <nav class="slds-context-bar__secondary slds-show_medium" role="navigation">
       <ul class="slds-grid">
         <HeaderLink href="/" title="Home" icon="home" />
         <HeaderLink href="/blog" title="Blog" icon="share_post" />
@@ -31,7 +25,7 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       </ul>
     </nav>
     <nav
-      class="slds-context-bar__secondary slds-align_absolute-center"
+      class="slds-context-bar__secondary slds-show_medium slds-align_absolute-center"
       role="navigation"
     >
       <SearchBar client:load size={4} dropdown-enabled={true}>
@@ -53,5 +47,72 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
         </div>
       </SearchBar>
     </nav>
+    <nav
+      class="slds-context-bar__secondary slds-hide_medium slds-grid_align-end"
+      role="navigation"
+      transition:persist
+    >
+      <div
+        class="slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover"
+      >
+        <div class="slds-context-bar__icon-action">
+          <button
+            data-mobile-trigger-menu-bar
+            class="slds-button slds-icon-waffle_container slds-context-bar__button"
+            title="Menu bar"
+          >
+            <span class="slds-icon-waffle">
+              <span class="slds-r1"></span>
+              <span class="slds-r2"></span>
+              <span class="slds-r3"></span>
+              <span class="slds-r4"></span>
+              <span class="slds-r5"></span>
+              <span class="slds-r6"></span>
+              <span class="slds-r7"></span>
+              <span class="slds-r8"></span>
+              <span class="slds-r9"></span>
+            </span>
+            <span class="slds-assistive-text">Open mobile menu</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div data-mobile-menu-bar class="slds-tabs-mobile__container slds-hide">
+    <ul class="slds-tabs-mobile">
+      <HeaderLinkMobile href="/" title="Home" icon="home" />
+      <HeaderLinkMobile href="/blog" title="Blog" icon="share_post" />
+      <HeaderLinkMobile href="/about" title="About" icon="user" />
+    </ul>
   </div>
 </header>
+
+<style>
+  .navBar {
+    height: 3.5rem;
+    padding: 0 5%;
+  }
+
+  .slds-global-header__logo {
+    width: 7.5rem;
+  }
+</style>
+
+<script>
+  document
+    .querySelector('[data-mobile-trigger-menu-bar]')
+    ?.addEventListener('click', () => toggleMobileNavBar());
+
+  document.addEventListener('astro:after-swap', () => resetMobileNavBar());
+
+  const resetMobileNavBar = () => {
+    const menuBar = document.querySelector('[data-mobile-menu-bar]');
+    menuBar?.classList.replace('slds-show', 'slds-hide');
+  };
+
+  const toggleMobileNavBar = () => {
+    const menuBar = document.querySelector('[data-mobile-menu-bar]');
+    menuBar?.classList.toggle('slds-hide');
+    menuBar?.classList.toggle('slds-show');
+  };
+</script>

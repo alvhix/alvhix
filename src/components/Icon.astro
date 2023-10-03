@@ -11,13 +11,11 @@ export enum IconName {
   GITHUB = 'github.svg',
   RSS = 'rss.svg',
 }
+
+const title = type.replace('.svg', '') + ' icon';
 ---
 
 <span class="slds-icon">
-  <img
-    src={`/svg/${type}`}
-    width="100%"
-    height="100%"
-    alt={type.replace('.svg', '')}
-  />
+  <img src={`/svg/${type}`} width="100%" height="100%" alt={title} />
+  <span class="slds-assistive-text">{title}</span>
 </span>
