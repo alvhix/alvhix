@@ -76,12 +76,12 @@ const posts = sortByDescendingPubDate(await getPostsUndrafted());
 const fuse: Fuse<any> = new Fuse(posts, fuseOptions);
 const results: any = ref([]);
 
-function handleSearch(event: Event) {
+const handleSearch = (event: Event) => {
     const inputElement: HTMLInputElement = <HTMLInputElement>event.target;
     results.value = query(inputElement.value);
 }
 
-function closeSearch(event: Event) {
+const closeSearch = (event: Event) => {
     const mouseEvent: MouseEvent = <MouseEvent>event;
     const relatedTarget: HTMLElement = <HTMLElement>mouseEvent?.relatedTarget;
 
@@ -93,7 +93,7 @@ function closeSearch(event: Event) {
 }
 
 
-function query(searchPattern: string): {}[] {
+const query = (searchPattern: string) => {
     return fuse
         .search(searchPattern)
         .map((result) => result.item)
