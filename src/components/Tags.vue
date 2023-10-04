@@ -1,13 +1,12 @@
 <template>
-    <span v-for="tag in tags" :key="tag" :data-tag=tag @click="filterPostsByTag"
+    <span v-for="tag in tags" :key="tag" :data-tag=tag @click="toggleTag"
         :class="['slds-badge', 'slds-m-right_x-small', 'slds-m-bottom_xx-small', { 'slds-badge_inverse': isActiveTag(tag) }]">
         #{{ tag }}
     </span>
 </template>
 
 <script setup lang="ts">
-import { retrieveActiveTags } from '../scripts/global';
-
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const { tags } = defineProps({
     tags: {
@@ -15,40 +14,43 @@ const { tags } = defineProps({
     }
 });
 
+const activeTags = ref<string[]>([]);
+
+onMounted(() => {
+    const newActiveTags = sessionStorage.getItem('activeTags');
+    activeTags.value = newActiveTags ? JSON.parse(newActiveTags) : [];
+    emit('tag-selected', activeTags.value);
+});
+
+onUnmounted(() => {
+    sessionStorage.setItem('activeTags', JSON.stringify(activeTags.value));
+});
+
 const emit = defineEmits(['tag-selected']);
 
-const filterPostsByTag = (event: any) => {
+const toggleTag = (event: any) => {
     const tagNode = event.target;
     const tag = tagNode.dataset.tag;
 
-    toggleTagStyle(tagNode);
     toggleActiveTag(tag);
-    emit('tag-selected', tag);
+    emit('tag-selected', activeTags.value);
 };
 
 const isActiveTag = (tag: string) => {
-    const activeTags = retrieveActiveTags();
-    if (activeTags.includes(tag)) {
+    if (activeTags.value.includes(tag)) {
         return true;
     }
 
     return false;
 };
 
-const toggleTagStyle = (tagNode: HTMLElement) => {
-    tagNode.classList.toggle('slds-badge_inverse');
-};
-
 const toggleActiveTag = (activeTag: string) => {
-    let activeTags = retrieveActiveTags();
-
-    if (activeTags.includes(activeTag)) {
-        activeTags = activeTags.filter((e) => e !== activeTag);
+    if (activeTags.value.includes(activeTag)) {
+        const index = activeTags.value.indexOf(activeTag);
+        activeTags.value.splice(index, 1);
     } else {
-        activeTags.push(activeTag);
+        activeTags.value.push(activeTag);
     }
-
-    sessionStorage.setItem('activeTags', JSON.stringify(activeTags));
 };
 </script>
 

@@ -17,7 +17,6 @@ import { onMounted, ref } from 'vue';
 import {
     getPostsUndrafted,
     getPostsUndraftedByActiveTags,
-    retrieveActiveTags,
     sortByDescendingPubDate,
 } from '../scripts/global';
 
@@ -27,12 +26,9 @@ const tags = ref<string[]>([]);
 onMounted(async () => {
     const fetchedPosts = await getPostsUndrafted();
     tags.value = Array.from(new Set(fetchedPosts.map((post) => post.data.tags).flat()));
-    await getPostsByActiveTags();
 });
 
-const getPostsByActiveTags = async () => {
-    const activeTags = retrieveActiveTags();
-
+const getPostsByActiveTags = async (activeTags: string[]) => {
     const hasActiveTags = activeTags.length === 0;
     const result = hasActiveTags
         ? await getPostsUndrafted()
