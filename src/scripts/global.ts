@@ -27,15 +27,9 @@ async function getPostsUndraftedByActiveTags(
   });
 }
 
-function retrieveActiveTags(): string[] {
-  const activeTags = sessionStorage.getItem('activeTags');
-  return activeTags ? JSON.parse(activeTags) : [];
-}
-
 export {
   sortByDescendingPubDate,
   getAllPosts,
   getPostsUndrafted,
   getPostsUndraftedByActiveTags,
-  retrieveActiveTags,
 };
