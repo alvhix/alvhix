@@ -14,7 +14,7 @@
 <script setup>
 import Tile from './Tile.vue';
 
-const { post } = defineProps(['post']);
+const { post } = defineProps({ post: { required: true }, });
 </script>
 
 <style scoped>
