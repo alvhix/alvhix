@@ -49,10 +49,9 @@
 
 <script setup lang="ts">
 import FormattedDate from './FormattedDate.vue'
-import { getCollection } from 'astro:content';
 import Fuse from 'fuse.js';
 import { ref } from 'vue'
-import { sortByDescendingPubDate } from '../scripts/global';
+import { getPostsUndrafted, sortByDescendingPubDate } from '../scripts/global';
 
 const props = defineProps({ size: { type: Number, required: true }, dropdownEnabled: Boolean });
 const maxNumberOfResults: number = 5;
@@ -72,9 +71,7 @@ const fuseOptions: {} = {
     // ignoreFieldNorm: false,
     // fieldNormWeight: 1,
 };
-const posts = sortByDescendingPubDate(await getCollection('blog', (post) => {
-    return !post.data.draft;
-}));
+const posts = sortByDescendingPubDate(await getPostsUndrafted());
 
 const fuse: Fuse<any> = new Fuse(posts, fuseOptions);
 const results: any = ref([]);

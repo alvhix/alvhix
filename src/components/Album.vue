@@ -1,6 +1,6 @@
 <template>
     <div class="tags">
-        <Tags :tags="tags" @tag-selected="getPostsByTag" />
+        <Tags :tags="tags" @tag-selected="getPostsByActiveTags" />
     </div>
 
     <hr />
@@ -10,49 +10,34 @@
     </ul>
 </template>
   
-<script setup>
-import { getCollection } from 'astro:content';
+<script setup lang="ts">
 import Tags from './Tags.vue';
 import PostCard from './PostCard.vue';
 import { onMounted, ref } from 'vue';
-import { sortByDescendingPubDate } from '../scripts/global';
+import {
+    getPostsUndrafted,
+    getPostsUndraftedByActiveTags,
+    retrieveActiveTags,
+    sortByDescendingPubDate,
+} from '../scripts/global';
 
-const posts = ref([]);
-const tags = ref([]);
+const posts = ref<any[]>([]);
+const tags = ref<string[]>([]);
 
 onMounted(async () => {
-    const fetchedPosts = await getCollection('blog', (post) => {
-        return !post.data.draft;
-    });
-    posts.value = sortByDescendingPubDate(fetchedPosts);
-    tags.value = [...new Set(posts.value.flatMap((post) => post.data.tags))];
+    const fetchedPosts = await getPostsUndrafted();
+    tags.value = Array.from(new Set(fetchedPosts.map((post) => post.data.tags).flat()));
+    await getPostsByActiveTags();
 });
 
-const getPostsByTag = async (tag) => {
+const getPostsByActiveTags = async () => {
     const activeTags = retrieveActiveTags();
 
     const hasActiveTags = activeTags.length === 0;
-    const result = hasActiveTags ?
-        await getCollection('blog') :
-        await getCollection('blog', ({ data }) => {
-            return !data.draft &&
-                activeTags.every(activeTag => data.tags.includes(activeTag));
-        });
+    const result = hasActiveTags
+        ? await getPostsUndrafted()
+        : await getPostsUndraftedByActiveTags(activeTags);
 
     posts.value = sortByDescendingPubDate([...result]);
 };
-
-const retrieveActiveTags = () => {
-    const tags = document.querySelectorAll('div.tags>span');
-    const activeTags = [];
-
-    for (const span of tags) {
-        if (span.classList.contains('slds-badge_inverse')) {
-            activeTags.push(span.dataset.tag);
-        }
-    }
-
-    return activeTags;
-};
-
 </script>
