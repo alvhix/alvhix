@@ -7,16 +7,14 @@
 <script setup>
 import { computed } from 'vue'
 
-const props = defineProps({
-	date: Date
-})
+const { date } = defineProps({ date: { type: Date, required: true } })
 
 const formattedDate = computed(() => {
-	if (props.date) {
+	if (date) {
 		const options = { year: 'numeric', month: 'short', day: 'numeric' }
-		return props.date.toLocaleDateString('en-US', options)
+		return date.toLocaleDateString('en-US', options)
 	} else {
 		return ''
 	}
-})
+});
 </script>

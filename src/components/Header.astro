@@ -135,14 +135,14 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
 
   document.addEventListener('astro:after-swap', () => resetMobileNavBar());
 
-  const resetMobileNavBar = () => {
-    const menuBar = document.querySelector('[data-mobile-menu-bar]');
-    menuBar?.classList.replace('slds-show', 'slds-hide');
-  };
-
   const toggleMobileNavBar = () => {
     const menuBar = document.querySelector('[data-mobile-menu-bar]');
     menuBar?.classList.toggle('slds-hide');
     menuBar?.classList.toggle('slds-show');
+  };
+
+  const resetMobileNavBar = () => {
+    const menuBar = document.querySelector('[data-mobile-menu-bar]');
+    menuBar?.classList.replace('slds-show', 'slds-hide');
   };
 </script>

@@ -27,9 +27,9 @@ const title = `${icon} ${type} icon`;
   class={`slds-icon slds-icon_${size} ${
     colored ? 'slds-icon-text-default' : ''
   }`}
-  title={title}
   aria-hidden="true"
 >
+  <title>{title}</title>
   <use xlink:href={`/svg/${type}.svg#${icon}`}></use>
 </svg>
 <span class="slds-assistive-text">{icon + ' icon'}</span>
