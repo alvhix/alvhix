@@ -8,11 +8,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const { tags } = defineProps({
-    tags: {
-        required: true
-    }
-});
+const { tags } = defineProps({ tags: { type: Array, required: true } });
 
 const activeTags = ref<string[]>([]);
 
@@ -28,20 +24,14 @@ onUnmounted(() => {
 
 const emit = defineEmits(['tag-selected']);
 
+const isActiveTag = (tag: string) => activeTags.value.includes(tag);
+
 const toggleTag = (event: any) => {
     const tagNode = event.target;
     const tag = tagNode.dataset.tag;
 
     toggleActiveTag(tag);
     emit('tag-selected', activeTags.value);
-};
-
-const isActiveTag = (tag: string) => {
-    if (activeTags.value.includes(tag)) {
-        return true;
-    }
-
-    return false;
 };
 
 const toggleActiveTag = (activeTag: string) => {
