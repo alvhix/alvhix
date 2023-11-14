@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 import { getAllPosts } from '../../scripts/global';
 
@@ -24,6 +24,8 @@ const { Content } = await post.render();
 
 <style is:inline>
   div.blogContent {
+    padding: 0.5rem 1rem;
+
     & p,
     & h1,
     & h2,
@@ -36,8 +38,20 @@ const { Content } = await post.render();
     & code,
     & b,
     & strong,
-    & blockquote {
+    & blockquote,
+    & ul,
+    & ol {
       all: revert;
+    }
+
+    & blockquote {
+      padding: 0.25rem;
+      border-left: 2px solid #1b96ff;
+      padding-left: 15px;
+      background-color: rgba(228, 228, 228, 0.5);
+      border-radius: 2px;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
 
     & body {
@@ -93,6 +107,10 @@ const { Content } = await post.render();
     & th,
     & td {
       padding: 0.25rem;
+    }
+
+    & a {
+      text-decoration: none;
     }
   }
 </style>
