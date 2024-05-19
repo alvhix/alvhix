@@ -2,6 +2,7 @@
 title: 'Dependency inversion in Apex'
 description: 'The fifth of the SOLID principles'
 pubDate: 'Nov 10 2023'
+updatedDate: 'May 19 2024'
 heroImage: '/images/blog-placeholder-1.jpg'
 draft: false
 tags:
@@ -45,7 +46,7 @@ Let's start from a basic example:
 The service class that we are going to use
 
 ```apex
-public inherited sharing class AccountService implements IAccountService {
+public with sharing class AccountServiceImpl implements IAccountService {
     public Account get(String uuid) {
         List<Account> accs = [SELECT Id, Name, NumberOfEmployees FROM Account WHERE UUID__c = :uuid];
         Account account = accs.isEmpty() ? null : accs[0];
@@ -103,7 +104,7 @@ A dependency injector framework. In Apex we have some options like:
 
 A dependency injection framework usually consists on two parts:
 
-1. A dependency container
+1. A dependency container mapper which maps the interface with the implementation class
 
    ```apex
    public class Application {
@@ -114,7 +115,7 @@ A dependency injection framework usually consists on two parts:
    }
    ```
 
-2. The injector itself
+2. The injector itself, receives the interface and returns the implementation instance
 
    For the production code
 
@@ -127,16 +128,19 @@ A dependency injection framework usually consists on two parts:
    For the tests, we set the mock to replace the implementation class by another
 
    ```apex
-   Application.Service.setMock(IAccountService.class, AccountServiceImplTest.class);
+   Application.Service.setMock(IAccountService.class, AccountServiceStub.class);
    ```
 
-   At the end, by passing an interface to the dependency injection we will get the correct implementation.
+   At the end, by passing an interface to the dependency injection framework we will get the correct implementation.
+
+   Note that now the implementation class and the interface are hardcoded in our Apex code, but it can be easily upgraded to rely on a Custom Metadata Type which gives the possibility to change dependencies at run time directly in your SF org and use it as a Feature Flag. For example, imagine that you want to deploy a new version of your service class, you would deploy a second new version with a different class name setup the CMT in the org and start using it. If you want to rollback and use the previous version of your class it would be as easy as changing the implementation class in the CMT.
 
 # Conclusions
 
 In conclusion, this technique will make your code be more flexible and scalable in the long term. The potential of the idea behind flexibility is so huge, take advantadge of it.
 
-| Pros                              | Cons                                         |
-| --------------------------------- | -------------------------------------------- |
-| Loose coupling between components | More complexity due to the abstraction layer |
-| Improve testability               | More prune to undetected runtime exceptions  |
+| Pros                              | Cons                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| Loose coupling between components | More complexity due to the abstraction layer                             |
+| Improve testability in unit tests | More prune to undetected runtime exceptions if not correctly unit tested |
+| Use as a feature flag             |                                                                          |
