@@ -133,7 +133,9 @@ A dependency injection framework usually consists on two parts:
 
    At the end, by passing an interface to the dependency injection framework we will get the correct implementation.
 
-   Note that now the implementation class and the interface are hardcoded in our Apex code, but it can be easily upgraded to rely on a Custom Metadata Type which gives the possibility to change dependencies at run time directly in your SF org and use it as a Feature Flag. For example, imagine that you want to deploy a new version of your service class, you would deploy a second new version with a different class name setup the CMT in the org and start using it. If you want to rollback and use the previous version of your class it would be as easy as changing the implementation class in the CMT.
+   Note that now the implementation class and the interface are hardcoded in our Apex code, but it can be easily upgraded to rely on a Custom Metadata Type which gives the possibility to change dependencies at run-time directly in your SF org and use it as a Feature Flag.
+
+   For example, imagine that you want to deploy a new version of your service class, you would deploy a second new version with a different class name set up the same mapping in the CMT and start using it. If you want to rollback to the previous version of your class it would be as easy as changing the implementation class in the CMT.
 
 # Conclusions
 
