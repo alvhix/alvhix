@@ -3,7 +3,7 @@ title: 'Dependency inversion in Apex'
 description: 'The fifth of the SOLID principles'
 pubDate: 'Nov 10 2023'
 updatedDate: 'May 19 2024'
-heroImage: '/images/blog-placeholder-1.jpg'
+heroImage: '/images/dependency-inversion-in-apex.jpeg'
 draft: false
 tags:
   - 'apex'
