@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/mdx": "^3.1.7",
@@ -25,7 +26,12 @@
     "eslint-plugin-vue": "^9.28.0",
     "globals": "^15.10.0",
     "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "typescript-eslint": "^8.8.1"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint --cache --fix",
+    "*.{js,vue,css,md}": "prettier --write"
   }
 }
