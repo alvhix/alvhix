@@ -1,16 +1,28 @@
 <template>
   <div class="slds-tile">
-    <h3 v-if="title" class="slds-tile__title slds-text-heading_medium slds-m-bottom_x-small slds-truncate" :title="title">
+    <h3
+      v-if="title"
+      class="slds-tile__title slds-text-heading_medium slds-m-bottom_x-small slds-truncate"
+      :title="title"
+    >
       {{ title }}
     </h3>
-    <h4 v-if="description" class="slds-tile__title slds-text-title slds-m-bottom_medium slds-truncate"
-      :title="description">
+    <h4
+      v-if="description"
+      class="slds-tile__title slds-text-title slds-m-bottom_medium slds-truncate"
+      :title="description"
+    >
       {{ description }}
     </h4>
     <div class="slds-tile__detail">
-      <dl class="slds-list_horizontal slds-grid_vertical-align-center slds-wrap">
+      <dl
+        class="slds-list_horizontal slds-grid_vertical-align-center slds-wrap"
+      >
         <template v-if="pubDate">
-          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Created">
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Created"
+          >
             Created:
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Created at">
@@ -20,21 +32,29 @@
           </dd>
         </template>
         <template v-if="updatedDate">
-          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Updated">
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Updated"
+          >
             Updated:
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Updated at">
-            <span class=" date">
+            <span class="date">
               <FormattedDate :date="updatedDate" />
             </span>
           </dd>
         </template>
         <template v-if="tags">
-          <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Tags">
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Tags"
+          >
             Tags:
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Tags">
-            <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+            <span
+              class="slds-listbox__option-text slds-listbox__option-text_entity"
+            >
               <span class="slds-badge" v-for="tag in tags" :key="tag">
                 #{{ tag }}
               </span>
@@ -47,7 +67,7 @@
 </template>
 
 <script setup>
-import FormattedDate from './FormattedDate.vue';
+import FormattedDate from "./FormattedDate.vue";
 const { title, description, pubDate, updatedDate, tags } = defineProps({
   title: String,
   description: String,
