@@ -10,16 +10,22 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.0.3",
+    "@astrojs/mdx": "^3.1.7",
     "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.0",
-    "@astrojs/vue": "^3.0.0",
-    "@salesforce-ux/design-system": "^2.22.0",
-    "astro": "^3.0.12",
+    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/vue": "^4.5.2",
+    "@salesforce-ux/design-system": "^2.25.2",
+    "astro": "^4.15.12",
     "fuse.js": "^6.6.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "prettier": "^3.0.3"
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-vue": "^9.28.0",
+    "globals": "^15.10.0",
+    "husky": "^9.1.6",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.8.1"
   }
 }
