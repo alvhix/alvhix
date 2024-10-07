@@ -1,15 +1,15 @@
 ---
-title: 'Dependency inversion in Apex'
-description: 'The fifth of the SOLID principles'
-pubDate: 'Nov 10 2023'
-updatedDate: 'May 19 2024'
-heroImage: '/images/dependency-inversion-in-apex.jpeg'
+title: "Dependency inversion in Apex"
+description: "The fifth of the SOLID principles"
+pubDate: "Nov 10 2023"
+updatedDate: "May 19 2024"
+heroImage: "/images/dependency-inversion-in-apex.jpeg"
 draft: false
 tags:
-  - 'apex'
-  - 'architecture'
-  - 'layered'
-  - 'good-practices'
+  - "apex"
+  - "architecture"
+  - "layered"
+  - "good-practices"
 ---
 
 # Basics

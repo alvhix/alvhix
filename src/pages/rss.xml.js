@@ -1,6 +1,6 @@
-import rss from '@astrojs/rss';
-import { getAllPosts } from '../scripts/global';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import rss from "@astrojs/rss";
+import { getAllPosts } from "../scripts/global";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 export async function GET(context) {
   const posts = await getAllPosts();

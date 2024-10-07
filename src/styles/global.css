@@ -1,12 +1,12 @@
 .main {
-    padding-top: 20px;
-    padding-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
 img.heroImage {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 hr {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }

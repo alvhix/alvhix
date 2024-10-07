@@ -1,7 +1,22 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "strictNullChecks": true,
-    "jsx": "preserve"
-  }
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "jsx": "preserve",
+        "moduleResolution": "Node",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "types": ["vite/client", "vue", "node"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.vue",
+        "src/**/*.astro"
+    ],
+    "exclude": ["node_modules/", "dist/"]
 }
