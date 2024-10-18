@@ -1,7 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import AppHeader from '../components/AppHeader.astro';
+import AppFooter from '@/components/AppFooter.astro';
 
 interface Props {
   title: string;
@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 
 <style>
   body {
-    background-image: url("/svg/background.svg");
+    background-image: url('/svg/background.svg');
   }
 </style>
 
@@ -22,7 +22,7 @@ const { title, description } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <Header />
+    <AppHeader />
     <main>
       <div class="slds-grid slds-grid_align-center slds-wrap main">
         <div
@@ -32,6 +32,6 @@ const { title, description } = Astro.props;
         </div>
       </div>
     </main>
-    <Footer />
+    <AppFooter />
   </body>
 </html>

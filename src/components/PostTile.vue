@@ -55,7 +55,7 @@
             <span
               class="slds-listbox__option-text slds-listbox__option-text_entity"
             >
-              <span class="slds-badge" v-for="tag in tags" :key="tag">
+              <span v-for="tag in tags" :key="tag" class="slds-badge">
                 #{{ tag }}
               </span>
             </span>
@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import FormattedDate from "./FormattedDate.vue";
+import FormattedDate from './FormattedDate.vue';
 const { title, description, pubDate, updatedDate, tags } = defineProps({
   title: String,
   description: String,

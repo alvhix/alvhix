@@ -7,7 +7,7 @@
         <Tile
           :title="post.data.title"
           :description="post.data.description"
-          :pubDate="post.data.pubDate"
+          :pub-date="post.data.pubDate"
           :tags="post.data.tags"
         />
       </a>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Tile from "./Tile.vue";
+import Tile from './PostTile.vue';
 
 const { post } = defineProps({ post: { required: true } });
 </script>

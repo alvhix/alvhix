@@ -1,5 +1,5 @@
 ---
-import Article from '../components/Article.astro';
+import ContentArticle from '../components/ContentArticle.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Not found" description="Page not found">
-  <Article title="Page not found">
+  <ContentArticle title="Page not found">
     <span
       slot="icon"
       class="slds-icon_container slds-icon-standard-home"
@@ -470,5 +470,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </h3>
       </div>
     </div>
-  </Article>
+  </ContentArticle>
 </BaseLayout>

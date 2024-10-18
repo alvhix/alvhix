@@ -1,6 +1,6 @@
 ---
-import Album from '../../components/Album.vue';
-import Article from '../../components/Article.astro';
+import AlbumPosts from '../../components/AlbumPosts.vue';
+import ContentArticle from '../../components/ContentArticle.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
@@ -12,7 +12,7 @@ const DESCRIPTION: string = 'All posts';
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
-  <Article title="Posts">
+  <ContentArticle title="Posts">
     <span
       slot="icon"
       class="slds-icon_container slds-icon-standard-news"
@@ -25,7 +25,7 @@ const DESCRIPTION: string = 'All posts';
       />
     </span>
     <div slot="body">
-      <Album client:load />
+      <AlbumPosts client:load />
     </div>
-  </Article>
+  </ContentArticle>
 </BaseLayout>
