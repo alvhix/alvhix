@@ -18,7 +18,12 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const { tags } = defineProps({ tags: { type: Array, required: true } });
+const { tags } = defineProps({
+  tags: {
+    type: Array as () => string[],
+    required: true,
+  },
+});
 
 const activeTags = ref<string[]>([]);
 

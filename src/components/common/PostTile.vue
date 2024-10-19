@@ -67,7 +67,7 @@
 </template>
 
 <script setup>
-import FormattedDate from './FormattedDate.vue';
+import FormattedDate from '@components/common/FormattedDate.vue';
 const { title, description, pubDate, updatedDate, tags } = defineProps({
   title: String,
   description: String,

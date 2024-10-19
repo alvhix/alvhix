@@ -1,6 +1,6 @@
 <template>
   <div class="tags">
-    <Tags :tags="tags" @tag-selected="getPostsByActiveTags" />
+    <AlbumTags :tags="tags" @tag-selected="getPostsByActiveTags" />
   </div>
 
   <hr />
@@ -11,15 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import Tags from './PostTags.vue';
-import PostCard from './PostCard.vue';
+import AlbumTags from '@/components/common/AlbumTags.vue';
+import PostCard from '@components/common/PostCard.vue';
 import { onMounted, ref } from 'vue';
 import {
   getPostsUndrafted,
   getPostsUndraftedByActiveTags,
   sortByDescendingPubDate,
-} from '../shared/global';
-import type { Post } from '@/shared/types';
+} from '@scripts/global';
+import type { Post } from '@scripts/types';
 
 const posts = ref<Post[]>([]);
 const tags = ref<string[]>([]);

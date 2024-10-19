@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import ContentArticle from '../components/ContentArticle.astro';
+import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
-} from '../components/SalesforceIcon.astro';
-import Tile from '../components/PostTile.vue';
-import BaseLayout from './BaseLayout.astro';
+} from '@components/common/SalesforceIcon.astro';
+import PostTile from '@components/common/PostTile.vue';
+import BaseLayout from '@layout/BaseLayout.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -15,7 +15,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 ---
 
 <BaseLayout title={title} description={description}>
-  <ContentArticle
+  <CardArticle
     title={title}
     description={description}
     commentsEnabled={true}
@@ -45,11 +45,11 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
           </a>
         )
       }
-      <Tile pubDate={pubDate} updatedDate={updatedDate} tags={tags} />
+      <PostTile pubDate={pubDate} updatedDate={updatedDate} tags={tags} />
       <hr />
       <slot />
     </section>
-  </ContentArticle>
+  </CardArticle>
 </BaseLayout>
 
 <style>

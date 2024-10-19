@@ -4,7 +4,7 @@
       <a :href="`/blog/${post.slug}/`" class="slds-text-link_reset">
         <img :src="post.data.heroImage" class="heroImage" :alt="post.slug" />
         <hr />
-        <Tile
+        <PostTile
           :title="post.data.title"
           :description="post.data.description"
           :pub-date="post.data.pubDate"
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Tile from './PostTile.vue';
+import PostTile from '@components/common/PostTile.vue';
 
 const { post } = defineProps({ post: { required: true } });
 </script>

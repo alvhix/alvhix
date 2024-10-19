@@ -45,6 +45,7 @@ const { title, description, commentsEnabled = false } = Astro.props;
     {
       commentsEnabled && (
         <script
+          is:inline
           src="https://giscus.app/client.js"
           data-repo="alvhix/alvhix"
           data-repo-id="R_kgDOGwcMcA"

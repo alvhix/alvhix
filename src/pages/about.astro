@@ -1,9 +1,9 @@
 ---
-import ContentArticle from '../components/ContentArticle.astro';
+import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon, {
   IconType,
   IconSize,
-} from '../components/SalesforceIcon.astro';
+} from '@components/common/SalesforceIcon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const TITLE: string = 'About';
@@ -11,7 +11,7 @@ const DESCRIPTION: string = 'About Alvhix blog';
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
-  <ContentArticle title="Alvhix blog">
+  <CardArticle title="Alvhix blog">
     <span
       slot="icon"
       class="slds-icon_container slds-icon-standard-user"
@@ -62,5 +62,5 @@ const DESCRIPTION: string = 'About Alvhix blog';
         >!
       </p>
     </div>
-  </ContentArticle>
+  </CardArticle>
 </BaseLayout>

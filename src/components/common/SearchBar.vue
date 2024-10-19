@@ -87,11 +87,11 @@
 </template>
 
 <script setup lang="ts">
-import FormattedDate from './FormattedDate.vue';
+import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
 import { ref } from 'vue';
-import { getPostsUndrafted, sortByDescendingPubDate } from '../shared/global';
-import type { Post } from '@/shared/types';
+import { getPostsUndrafted, sortByDescendingPubDate } from '@scripts/global';
+import type { Post } from '@/scripts/types';
 
 const props = defineProps({
   size: { type: Number, required: true },

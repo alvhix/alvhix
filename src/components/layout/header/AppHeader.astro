@@ -1,8 +1,11 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import HeaderLinkMobile from './HeaderLinkMobile.astro';
-import SearchBar from './SearchBar.vue';
-import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
+import HeaderLink from '@components/layout/header/HeaderLink.astro';
+import HeaderLinkMobile from '@components/layout/header/HeaderLinkMobile.astro';
+import SearchBar from '@components/common/SearchBar.vue';
+import SalesforceIcon, {
+  IconType,
+  IconSize,
+} from '@components/common/SalesforceIcon.astro';
 ---
 
 <header class="header">
@@ -28,7 +31,7 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       class="slds-context-bar__secondary slds-show_medium slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar client:load size={4} dropdown-enabled={true}>
+      <SearchBar client:load size={4} dropdownEnabled={true}>
         <div slot="search-icon">
           <SalesforceIcon
             icon="search"
@@ -51,7 +54,7 @@ import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
       class="slds-context-bar__secondary slds-hide_medium slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar client:load size={6} dropdown-enabled={true}>
+      <SearchBar client:load size={6} dropdownEnabled={true}>
         <div slot="search-icon">
           <SalesforceIcon
             icon="search"
