@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`slds-form-element slds-large-size_${props.size}-of-6 slds-medium-size_${props.size + 1}-of-6`"
-  >
+  <div :class="`slds-form-element device-type-${props.deviceType}`">
     <div class="slds-form-element__control">
       <div class="slds-combobox_container">
         <div
@@ -14,9 +12,6 @@
           >
             <input
               type="text"
-              @input="handleSearch"
-              @focusin="handleSearch"
-              @focusout="closeSearch"
               class="slds-input slds-combobox__input"
               aria-autocomplete="list"
               aria-controls="listbox-id-1"
@@ -24,6 +19,10 @@
               aria-haspopup="listbox"
               autocomplete="off"
               role="combobox"
+              @input="handleSearch"
+              @focusin="handleSearch"
+              @mousedown="closeSearch"
+              @blur="closeSearch"
             />
             <span
               class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right"
@@ -41,6 +40,7 @@
             <ul class="slds-listbox slds-listbox_vertical" role="presentation">
               <li
                 v-for="result in results"
+                :key="result.id"
                 role="presentation"
                 class="slds-listbox__item"
               >
@@ -70,9 +70,7 @@
                         <span
                           class="slds-listbox__option-meta slds-listbox__option-meta_entity"
                         >
-                          <FormattedDate
-                            :date="result.data.pubDate"
-                          ></FormattedDate>
+                          <FormattedDate :date="result.data.pubDate" />
                         </span>
                       </article>
                     </span>
@@ -88,20 +86,22 @@
 </template>
 
 <script setup lang="ts">
-import FormattedDate from "./FormattedDate.vue";
-import Fuse from "fuse.js";
-import { ref } from "vue";
-import { getPostsUndrafted, sortByDescendingPubDate } from "../scripts/global";
+import FormattedDate from '@components/common/FormattedDate.vue';
+import Fuse from 'fuse.js';
+import { ref } from 'vue';
+import { getPostsUndrafted, sortByDescendingPubDate } from '@scripts/global';
+import { DeviceType, type Post } from '@/scripts/types';
 
-const props = defineProps({
-  size: { type: Number, required: true },
-  dropdownEnabled: Boolean,
-});
+const props = defineProps<{
+  deviceType: DeviceType;
+  dropdownEnabled: boolean;
+}>();
+
 const maxNumberOfResults: number = 5;
-const fuseOptions: {} = {
+const fuseOptions: object = {
   minMatchCharLength: 2,
   threshold: 0.5,
-  keys: ["data.title", "body"],
+  keys: ['data.title', 'body'],
   // isCaseSensitive: false,
   // includeScore: false,
   // shouldSort: true,
@@ -115,9 +115,8 @@ const fuseOptions: {} = {
   // fieldNormWeight: 1,
 };
 const posts = sortByDescendingPubDate(await getPostsUndrafted());
-
-const fuse: Fuse<any> = new Fuse(posts, fuseOptions);
-const results: any = ref([]);
+const fuse: Fuse<Post> = new Fuse(posts, fuseOptions);
+const results = ref<Post[]>([]);
 
 const handleSearch = (event: Event) => {
   const inputElement: HTMLInputElement = <HTMLInputElement>event.target;
@@ -128,7 +127,7 @@ const closeSearch = (event: Event) => {
   const mouseEvent: MouseEvent = <MouseEvent>event;
   const relatedTarget: HTMLElement = <HTMLElement>mouseEvent?.relatedTarget;
 
-  if (relatedTarget && relatedTarget.matches("a[data-result-item]")) {
+  if (relatedTarget && relatedTarget.matches('a[data-result-item]')) {
     return;
   }
 
@@ -142,3 +141,13 @@ const query = (searchPattern: string) => {
     .slice(0, maxNumberOfResults);
 };
 </script>
+
+<style scoped>
+.device-type-desktop {
+  min-width: 240px;
+}
+
+.device-type-mobile {
+  min-width: 100%;
+}
+</style>

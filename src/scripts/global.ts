@@ -1,35 +1,25 @@
-import { getCollection } from "astro:content";
+import { getCollection } from 'astro:content';
+import type { Post } from './types';
 
-function sortByDescendingPubDate(posts: any[]): any[] {
+export function sortByDescendingPubDate(posts: Post[]): Post[] {
   return posts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 }
 
-async function getAllPosts(): Promise<any[]> {
-  return await getCollection("blog");
-}
-
-async function getPostsUndrafted(): Promise<any[]> {
-  return await getCollection("blog", (post: { data: any }) => {
-    return !post.data.draft;
+export async function getPostsUndrafted(): Promise<Post[]> {
+  return await getCollection('blog', ({ data }) => {
+    return !data.draft;
   });
 }
 
-async function getPostsUndraftedByActiveTags(
-  activeTags: string[],
-): Promise<any[]> {
-  return await getCollection("blog", ({ data }: { data: any }) => {
+export async function getPostsUndraftedByActiveTags(
+  activeTags: string[]
+): Promise<Post[]> {
+  return await getCollection('blog', ({ data }) => {
     return (
       !data.draft &&
       activeTags.every((activeTag) => data.tags.includes(activeTag))
     );
   });
 }
-
-export {
-  sortByDescendingPubDate,
-  getAllPosts,
-  getPostsUndrafted,
-  getPostsUndraftedByActiveTags,
-};

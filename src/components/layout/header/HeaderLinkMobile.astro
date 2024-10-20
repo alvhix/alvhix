@@ -1,5 +1,8 @@
 ---
-import SalesforceIcon, { IconType, IconSize } from './SalesforceIcon.astro';
+import SalesforceIcon, {
+  IconType,
+  IconSize,
+} from '@components/common/SalesforceIcon.astro';
 
 interface Props {
   href: string;
@@ -12,10 +15,10 @@ const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
-<li class:list={['slds-context-bar__item', { 'slds-is-active': isActive }]}>
+<li class:list={['slds-tabs-mobile__item', { 'slds-is-active': isActive }]}>
   <a
     href={href}
-    class="slds-context-bar__label-action slds-text-heading_x-small"
+    class="slds-context-bar__label-action slds-text-heading_x-small slds-align_absolute-center"
     title={title}
     role="tab"
     aria-selected={isActive}

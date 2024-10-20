@@ -1,22 +1,22 @@
 {
-    "extends": "astro/tsconfigs/strict",
-    "compilerOptions": {
-        "strictNullChecks": true,
-        "jsx": "preserve",
-        "moduleResolution": "Node",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "types": ["vite/client", "vue", "node"],
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["src/*"]
-        }
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.vue",
-        "src/**/*.astro"
-    ],
-    "exclude": ["node_modules/", "dist/"]
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client", "vue", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@layout/*": ["src/layouts/*"],
+      "@scripts/*": ["src/scripts/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "src/**/*.astro"],
+  "exclude": ["node_modules/", "dist/"]
 }

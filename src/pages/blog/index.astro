@@ -1,10 +1,10 @@
 ---
-import Album from '../../components/Album.vue';
-import Article from '../../components/Article.astro';
+import AlbumPosts from '@components/common/AlbumPosts.vue';
+import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon, {
   IconSize,
   IconType,
-} from '../../components/SalesforceIcon.astro';
+} from '@components/common/SalesforceIcon.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const TITLE: string = 'Blog';
@@ -12,7 +12,7 @@ const DESCRIPTION: string = 'All posts';
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
-  <Article title="Posts">
+  <CardArticle title="Posts">
     <span
       slot="icon"
       class="slds-icon_container slds-icon-standard-news"
@@ -25,7 +25,7 @@ const DESCRIPTION: string = 'All posts';
       />
     </span>
     <div slot="body">
-      <Album client:load />
+      <AlbumPosts client:load />
     </div>
-  </Article>
+  </CardArticle>
 </BaseLayout>

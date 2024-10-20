@@ -1,32 +1,33 @@
 <template>
   <div class="tags">
-    <Tags :tags="tags" @tag-selected="getPostsByActiveTags" />
+    <AlbumTags :tags="tags" @tag-selected="getPostsByActiveTags" />
   </div>
 
   <hr />
 
   <ul class="slds-grid slds-wrap">
-    <PostCard v-for="post in posts" :post="post" />
+    <PostCard v-for="post in posts" :key="post.id" :post="post" />
   </ul>
 </template>
 
 <script setup lang="ts">
-import Tags from "./Tags.vue";
-import PostCard from "./PostCard.vue";
-import { onMounted, ref } from "vue";
+import AlbumTags from '@/components/common/AlbumTags.vue';
+import PostCard from '@components/common/PostCard.vue';
+import { onMounted, ref } from 'vue';
 import {
   getPostsUndrafted,
   getPostsUndraftedByActiveTags,
   sortByDescendingPubDate,
-} from "../scripts/global";
+} from '@scripts/global';
+import type { Post } from '@scripts/types';
 
-const posts = ref<any[]>([]);
+const posts = ref<Post[]>([]);
 const tags = ref<string[]>([]);
 
 onMounted(async () => {
   const fetchedPosts = await getPostsUndrafted();
   tags.value = Array.from(
-    new Set(fetchedPosts.map((post) => post.data.tags).flat()),
+    new Set(fetchedPosts.map((post) => post.data.tags).flat())
   );
 });
 

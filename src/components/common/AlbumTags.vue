@@ -3,48 +3,57 @@
     v-for="tag in tags"
     :key="tag"
     :data-tag="tag"
-    @click="toggleTag"
     :class="[
       'slds-badge',
       'slds-m-right_x-small',
       'slds-m-bottom_xx-small',
       { 'slds-badge_inverse': isActiveTag(tag) },
     ]"
+    @click="toggleTag"
   >
     #{{ tag }}
   </span>
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { onMounted, onUnmounted, ref } from 'vue';
 
-const { tags } = defineProps({ tags: { type: Array, required: true } });
+const { tags } = defineProps({
+  tags: {
+    type: Array as () => string[],
+    required: true,
+  },
+});
 
 const activeTags = ref<string[]>([]);
 
 onMounted(() => {
-  const newActiveTags = sessionStorage.getItem("activeTags");
+  const newActiveTags = sessionStorage.getItem('activeTags');
   activeTags.value = newActiveTags ? JSON.parse(newActiveTags) : [];
-  emit("tag-selected", activeTags.value);
+  emit('tag-selected', activeTags.value);
 });
 
 onUnmounted(() => {
-  sessionStorage.setItem("activeTags", JSON.stringify(activeTags.value));
+  sessionStorage.setItem('activeTags', JSON.stringify(activeTags.value));
 });
 
-const emit = defineEmits(["tag-selected"]);
+const emit = defineEmits(['tag-selected']);
 
 const isActiveTag = (tag: string) => activeTags.value.includes(tag);
 
-const toggleTag = (event: any) => {
-  const tagNode = event.target;
-  const tag = tagNode.dataset.tag;
+const toggleTag = (event: MouseEvent) => {
+  const tagNode = event.target as HTMLElement;
+  const tag = tagNode?.dataset.tag;
 
   toggleActiveTag(tag);
-  emit("tag-selected", activeTags.value);
+  emit('tag-selected', activeTags.value);
 };
 
-const toggleActiveTag = (activeTag: string) => {
+const toggleActiveTag = (activeTag: string | undefined) => {
+  if (!activeTag) {
+    return;
+  }
+
   if (activeTags.value.includes(activeTag)) {
     const index = activeTags.value.indexOf(activeTag);
     activeTags.value.splice(index, 1);

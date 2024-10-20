@@ -2,12 +2,12 @@
   <li class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
     <div class="slds-box">
       <a :href="`/blog/${post.slug}/`" class="slds-text-link_reset">
-        <img :src="post.data.heroImage" class="heroImage" :alt="post.slug" />
+        <img :src="post.data.heroImage" class="hero-image" :alt="post.slug" />
         <hr />
-        <Tile
+        <PostTile
           :title="post.data.title"
           :description="post.data.description"
-          :pubDate="post.data.pubDate"
+          :pub-date="post.data.pubDate"
           :tags="post.data.tags"
         />
       </a>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import Tile from "./Tile.vue";
+import PostTile from '@components/common/PostTile.vue';
 
 const { post } = defineProps({ post: { required: true } });
 </script>
