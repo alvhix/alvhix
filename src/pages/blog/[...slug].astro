@@ -1,7 +1,13 @@
 ---
 import { type CollectionEntry } from 'astro:content';
-import BlogPost from '@layout/BlogPost.astro';
 import { getCollection } from 'astro:content';
+import CardArticle from '@components/layout/body/CardArticle.astro';
+import SalesforceIcon, {
+  IconSize,
+  IconType,
+} from '@components/common/SalesforceIcon.astro';
+import PostTile from '@components/common/PostTile.vue';
+import BaseLayout from '@layout/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -10,20 +16,59 @@ export async function getStaticPaths() {
     props: post,
   }));
 }
+
 type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
-  <div class="blogContent">
-    <Content />
-  </div>
-</BlogPost>
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <CardArticle
+    title={post.data.title}
+    description={post.data.description}
+    commentsEnabled={true}
+  >
+    <span
+      slot="icon"
+      class="slds-icon_container slds-icon-standard-post"
+      title="home"
+    >
+      <SalesforceIcon
+        icon="post"
+        type={IconType.STANDARD}
+        size={IconSize.SMALL}
+      />
+    </span>
+    <section slot="body">
+      {
+        post.data.heroImage && (
+          <a href={post.data.heroImage} target="_blank">
+            <img
+              class="slds-align_absolute-center slds-m-bottom_large hero-image"
+              src={post.data.heroImage}
+              alt="Blog post hero image"
+              width="100%"
+              height="100%"
+            />
+          </a>
+        )
+      }
+      <PostTile
+        pubDate={post.data.pubDate}
+        updatedDate={post.data.updatedDate}
+        tags={post.data.tags}
+      />
+      <hr />
+      <div class="blog-content">
+        <Content />
+      </div>
+    </section>
+  </CardArticle>
+</BaseLayout>
 
 <style is:inline>
-  div.blogContent {
+  div.blog-content {
     padding: 0.5rem 1rem;
 
     & p,
@@ -112,5 +157,21 @@ const { Content } = await post.render();
     & a {
       text-decoration: none;
     }
+  }
+
+  img.hero-image {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease,
+      border 0.3s ease;
+  }
+
+  img.hero-image:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition-delay: 0.1s;
   }
 </style>
