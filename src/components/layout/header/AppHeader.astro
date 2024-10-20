@@ -1,7 +1,8 @@
 ---
+import SearchBar from '@components/common/SearchBar.vue';
 import HeaderLink from '@components/layout/header/HeaderLink.astro';
 import HeaderLinkMobile from '@components/layout/header/HeaderLinkMobile.astro';
-import SearchBar from '@components/common/SearchBar.vue';
+import { DeviceType } from '@/scripts/types';
 import SalesforceIcon, {
   IconType,
   IconSize,
@@ -9,13 +10,13 @@ import SalesforceIcon, {
 ---
 
 <header class="header">
-  <div class="slds-context-bar navBar">
+  <div class="slds-context-bar nav-bar">
     <nav
       class="slds-context-bar__primary slds-align_absolute-center"
       role="navigation"
     >
       <a href="/">
-        <div class="slds-global-header__logo" transition:animate="slide">
+        <div class="slds-global-header__logo">
           <span class="slds-assistive-text">Salesforce</span>
         </div>
       </a>
@@ -31,7 +32,11 @@ import SalesforceIcon, {
       class="slds-context-bar__secondary slds-show_medium slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar client:load size={4} dropdownEnabled={true}>
+      <SearchBar
+        client:load
+        deviceType={DeviceType.DESKTOP}
+        dropdownEnabled={true}
+      >
         <div slot="search-icon">
           <SalesforceIcon
             icon="search"
@@ -54,7 +59,11 @@ import SalesforceIcon, {
       class="slds-context-bar__secondary slds-hide_medium slds-align_absolute-center"
       role="navigation"
     >
-      <SearchBar client:load size={6} dropdownEnabled={true}>
+      <SearchBar
+        client:load
+        deviceType={DeviceType.MOBILE}
+        dropdownEnabled={true}
+      >
         <div slot="search-icon">
           <SalesforceIcon
             icon="search"
@@ -116,21 +125,6 @@ import SalesforceIcon, {
   </div>
 </header>
 
-<style>
-  .navBar {
-    height: 3.5rem;
-    padding: 0 5%;
-  }
-
-  .slds-global-header__logo {
-    width: 7.5rem;
-  }
-
-  .slds-tabs-mobile__container {
-    outline: 2px solid #1b96ff;
-  }
-</style>
-
 <script>
   document
     .querySelector('[data-mobile-trigger-menu-bar]')
@@ -149,3 +143,18 @@ import SalesforceIcon, {
     menuBar?.classList.replace('slds-show', 'slds-hide');
   };
 </script>
+
+<style>
+  .nav-bar {
+    height: 3.5rem;
+    padding: 0 5%;
+  }
+
+  .slds-global-header__logo {
+    width: 7.5rem;
+  }
+
+  .slds-tabs-mobile__container {
+    outline: 2px solid #1b96ff;
+  }
+</style>

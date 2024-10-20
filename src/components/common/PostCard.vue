@@ -2,7 +2,7 @@
   <li class="slds-col slds-size_1-of-1 slds-p-bottom_x-small">
     <div class="slds-box">
       <a :href="`/blog/${post.slug}/`" class="slds-text-link_reset">
-        <img :src="post.data.heroImage" class="heroImage" :alt="post.slug" />
+        <img :src="post.data.heroImage" class="hero-image" :alt="post.slug" />
         <hr />
         <PostTile
           :title="post.data.title"

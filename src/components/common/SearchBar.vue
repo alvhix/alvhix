@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`slds-form-element slds-large-size_${props.size}-of-6 slds-medium-size_${props.size + 1}-of-6`"
-  >
+  <div :class="`slds-form-element device-type-${props.deviceType}`">
     <div class="slds-form-element__control">
       <div class="slds-combobox_container">
         <div
@@ -23,7 +21,8 @@
               role="combobox"
               @input="handleSearch"
               @focusin="handleSearch"
-              @focusout="closeSearch"
+              @mousedown="closeSearch"
+              @blur="closeSearch"
             />
             <span
               class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right"
@@ -91,12 +90,13 @@ import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
 import { ref } from 'vue';
 import { getPostsUndrafted, sortByDescendingPubDate } from '@scripts/global';
-import type { Post } from '@/scripts/types';
+import { DeviceType, type Post } from '@/scripts/types';
 
-const props = defineProps({
-  size: { type: Number, required: true },
-  dropdownEnabled: Boolean,
-});
+const props = defineProps<{
+  deviceType: DeviceType;
+  dropdownEnabled: boolean;
+}>();
+
 const maxNumberOfResults: number = 5;
 const fuseOptions: object = {
   minMatchCharLength: 2,
@@ -115,7 +115,6 @@ const fuseOptions: object = {
   // fieldNormWeight: 1,
 };
 const posts = sortByDescendingPubDate(await getPostsUndrafted());
-
 const fuse: Fuse<Post> = new Fuse(posts, fuseOptions);
 const results = ref<Post[]>([]);
 
@@ -142,3 +141,13 @@ const query = (searchPattern: string) => {
     .slice(0, maxNumberOfResults);
 };
 </script>
+
+<style scoped>
+.device-type-desktop {
+  min-width: 240px;
+}
+
+.device-type-mobile {
+  min-width: 100%;
+}
+</style>

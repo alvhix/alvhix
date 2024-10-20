@@ -36,7 +36,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         heroImage && (
           <a href={heroImage} target="_blank">
             <img
-              class="slds-align_absolute-center slds-m-bottom_large heroImage"
+              class="slds-align_absolute-center slds-m-bottom_large hero-image"
               src={heroImage}
               alt="Blog image"
               width="100%"
@@ -53,7 +53,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
 </BaseLayout>
 
 <style>
-  img.heroImage {
+  img.hero-image {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition:
@@ -62,7 +62,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
       border 0.3s ease;
   }
 
-  img.heroImage:hover {
+  img.hero-image:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-4px);
     border: 1px solid rgba(0, 0, 0, 0.2);

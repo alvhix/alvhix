@@ -7,3 +7,8 @@ export interface Post {
   collection: string;
   data: InferEntrySchema<'blog'>;
 }
+
+export enum DeviceType {
+  MOBILE = 'mobile',
+  DESKTOP = 'desktop',
+}
