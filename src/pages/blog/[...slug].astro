@@ -2,12 +2,10 @@
 import { type CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import CardArticle from '@components/layout/body/CardArticle.astro';
-import SalesforceIcon, {
-  IconSize,
-  IconType,
-} from '@components/common/SalesforceIcon.astro';
+import SalesforceIcon from '@components/common/SalesforceIcon.vue';
 import PostTile from '@components/common/PostTile.vue';
 import BaseLayout from '@layout/BaseLayout.astro';
+import { IconSize, IconType } from '@/scripts/types';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');

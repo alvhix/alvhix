@@ -3,10 +3,6 @@ import SearchBar from '@components/common/SearchBar.vue';
 import HeaderLink from '@components/layout/header/HeaderLink.astro';
 import HeaderLinkMobile from '@components/layout/header/HeaderLinkMobile.astro';
 import { DeviceType } from '@/scripts/types';
-import SalesforceIcon, {
-  IconType,
-  IconSize,
-} from '@components/common/SalesforceIcon.astro';
 ---
 
 <header class="header">
@@ -36,24 +32,7 @@ import SalesforceIcon, {
         client:load
         deviceType={DeviceType.DESKTOP}
         dropdownEnabled={true}
-      >
-        <div slot="search-icon">
-          <SalesforceIcon
-            icon="search"
-            type={IconType.UTILITY}
-            size={IconSize.X_SMALL}
-            colored={true}
-          />
-        </div>
-
-        <div slot="post-icon">
-          <SalesforceIcon
-            icon="post"
-            type={IconType.STANDARD}
-            size={IconSize.X_SMALL}
-          />
-        </div>
-      </SearchBar>
+      />
     </nav>
     <nav
       class="slds-context-bar__secondary slds-hide_medium slds-align_absolute-center"
@@ -63,24 +42,7 @@ import SalesforceIcon, {
         client:load
         deviceType={DeviceType.MOBILE}
         dropdownEnabled={true}
-      >
-        <div slot="search-icon">
-          <SalesforceIcon
-            icon="search"
-            type={IconType.UTILITY}
-            size={IconSize.X_SMALL}
-            colored={true}
-          />
-        </div>
-
-        <div slot="post-icon">
-          <SalesforceIcon
-            icon="post"
-            type={IconType.STANDARD}
-            size={IconSize.X_SMALL}
-          />
-        </div>
-      </SearchBar>
+      />
     </nav>
     <nav
       class="slds-context-bar__secondary slds-hide_medium slds-grid_align-end"
