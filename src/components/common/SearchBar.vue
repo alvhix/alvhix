@@ -27,7 +27,12 @@
             <span
               class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right"
             >
-              <slot name="search-icon" />
+              <SalesforceIcon
+                icon="search"
+                :type="IconType.UTILITY"
+                :size="IconSize.X_SMALL"
+                :colored="true"
+              />
             </span>
           </div>
           <div
@@ -56,7 +61,11 @@
                   >
                     <span class="slds-media__figure slds-listbox__option-icon">
                       <span class="slds-icon_container slds-icon-standard-post">
-                        <slot name="post-icon" />
+                        <SalesforceIcon
+                          icon="post"
+                          :type="IconType.STANDARD"
+                          :size="IconSize.X_SMALL"
+                        />
                       </span>
                     </span>
                     <span class="slds-media__body">
@@ -86,11 +95,12 @@
 </template>
 
 <script setup lang="ts">
+import SalesforceIcon from './SalesforceIcon.vue';
 import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
 import { ref } from 'vue';
 import { getPostsUndrafted, sortByDescendingPubDate } from '@scripts/global';
-import { DeviceType, type Post } from '@/scripts/types';
+import { DeviceType, type Post, IconType, IconSize } from '@/scripts/types';
 
 const props = defineProps<{
   deviceType: DeviceType;

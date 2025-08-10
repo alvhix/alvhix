@@ -11,12 +11,6 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<style>
-  body {
-    background-image: url('/svg/background.svg');
-  }
-</style>
-
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
@@ -24,12 +18,10 @@ const { title, description } = Astro.props;
   <body>
     <AppHeader />
     <main>
-      <div class="slds-grid slds-grid_align-center slds-wrap main">
-        <div
-          class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
-        >
-          <slot />
-        </div>
+      <div
+        class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-wrap main"
+      >
+        <slot />
       </div>
     </main>
     <AppFooter />
