@@ -10,20 +10,24 @@ const DESCRIPTION: string = 'All posts';
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
-  <CardArticle title="Posts">
-    <span
-      slot="icon"
-      class="slds-icon_container slds-icon-standard-news"
-      title="posts"
-    >
-      <SalesforceIcon
-        icon="news"
-        type={IconType.STANDARD}
-        size={IconSize.SMALL}
-      />
-    </span>
-    <div slot="body">
-      <AlbumPosts client:load />
-    </div>
-  </CardArticle>
+  <div
+    class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+  >
+    <CardArticle title="Posts">
+      <span
+        slot="icon"
+        class="slds-icon_container slds-icon-standard-news"
+        title="posts"
+      >
+        <SalesforceIcon
+          icon="news"
+          type={IconType.STANDARD}
+          size={IconSize.SMALL}
+        />
+      </span>
+      <div slot="body">
+        <AlbumPosts client:load />
+      </div>
+    </CardArticle>
+  </div>
 </BaseLayout>

@@ -9,53 +9,58 @@ const DESCRIPTION: string = 'Alvhix blog';
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
-  <CardArticle title="Alvhix blog">
-    <span
-      slot="icon"
-      class="slds-icon_container slds-icon-standard-home"
-      title="home"
-    >
-      <SalesforceIcon
-        icon="home"
-        type={IconType.STANDARD}
-        size={IconSize.SMALL}
-      />
-    </span>
-    <div slot="body">
-      <p>
-        Salesforce is a great CRM which allows customization. This customization
-        comes with responsabilities and limits. Let's take a look of how to go
-        through all this problems focusing on <strong
-          >good engineering practices</strong
-        >, and by good I mean legible, performant and well architected
-        soluctions that can scale over time. Solutions that you will look back
-        on in time and be proud of.
-      </p>
-      <img
-        src="https://www.salesforce.com/content/dam/web/en_us/www/images/saas/whatis-jumbo-astro-product.png"
-        width="100%"
-        height="100%"
-        alt="welcome"
-      />
-      <p>
-        Normally, people see Salesforce like a black box where you do some point
-        and click and magically you will have an scalable complex system of
-        thousands of business rules well integrated with the rest of your
-        system. The truth is that to have a really good system there is a lot of
-        engineering behind it, a lot of hours doing brainstorming, searching,
-        analyzing and comparing different solutions that can solve the needs.
-      </p>
-      <p>
-        One of the goals of this blog is to achieve saving as many hours in
-        software development on your SF org as we can. For that, we will go back
-        to the very basics and start doing rocket science, taking it step by
-        step. Managing the complexity when it grows like bosses.
-      </p>
-      <p>
-        Enough text for now, time to drill down. Search for a post of interest
-        or explore the post section. Also, take a look to my social media if you
-        want to contact me.
-      </p>
-    </div>
-  </CardArticle>
+  <div
+    class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
+  >
+    <CardArticle title="Alvhix blog">
+      <span
+        slot="icon"
+        class="slds-icon_container slds-icon-standard-home"
+        title="home"
+      >
+        <SalesforceIcon
+          icon="home"
+          type={IconType.STANDARD}
+          size={IconSize.SMALL}
+        />
+      </span>
+      <div slot="body">
+        <p>
+          Salesforce is a great CRM which allows customization. This
+          customization comes with responsabilities and limits. Let's take a
+          look of how to go through all this problems focusing on <strong
+            >good engineering practices</strong
+          >, and by good I mean legible, performant and well architected
+          soluctions that can scale over time. Solutions that you will look back
+          on in time and be proud of.
+        </p>
+        <img
+          src="https://www.salesforce.com/content/dam/web/en_us/www/images/saas/whatis-jumbo-astro-product.png"
+          width="100%"
+          height="100%"
+          alt="welcome"
+        />
+        <p>
+          Normally, people see Salesforce like a black box where you do some
+          point and click and magically you will have an scalable complex system
+          of thousands of business rules well integrated with the rest of your
+          system. The truth is that to have a really good system there is a lot
+          of engineering behind it, a lot of hours doing brainstorming,
+          searching, analyzing and comparing different solutions that can solve
+          the needs.
+        </p>
+        <p>
+          One of the goals of this blog is to achieve saving as many hours in
+          software development on your SF org as we can. For that, we will go
+          back to the very basics and start doing rocket science, taking it step
+          by step. Managing the complexity when it grows like bosses.
+        </p>
+        <p>
+          Enough text for now, time to drill down. Search for a post of interest
+          or explore the post section. Also, take a look to my social media if
+          you want to contact me.
+        </p>
+      </div>
+    </CardArticle>
+  </div>
 </BaseLayout>

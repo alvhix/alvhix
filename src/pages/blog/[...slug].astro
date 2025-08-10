@@ -22,47 +22,51 @@ const { Content } = await post.render();
 ---
 
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <CardArticle
-    title={post.data.title}
-    description={post.data.description}
-    commentsEnabled={true}
+  <div
+    class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
   >
-    <span
-      slot="icon"
-      class="slds-icon_container slds-icon-standard-post"
-      title="home"
+    <CardArticle
+      title={post.data.title}
+      description={post.data.description}
+      commentsEnabled={true}
     >
-      <SalesforceIcon
-        icon="post"
-        type={IconType.STANDARD}
-        size={IconSize.SMALL}
-      />
-    </span>
-    <section slot="body">
-      {
-        post.data.heroImage && (
-          <a href={post.data.heroImage} target="_blank">
-            <img
-              class="slds-align_absolute-center slds-m-bottom_large hero-image"
-              src={post.data.heroImage}
-              alt="Blog post hero image"
-              width="100%"
-              height="100%"
-            />
-          </a>
-        )
-      }
-      <PostTile
-        pubDate={post.data.pubDate}
-        updatedDate={post.data.updatedDate}
-        tags={post.data.tags}
-      />
-      <hr />
-      <div class="blog-content">
-        <Content />
-      </div>
-    </section>
-  </CardArticle>
+      <span
+        slot="icon"
+        class="slds-icon_container slds-icon-standard-post"
+        title="home"
+      >
+        <SalesforceIcon
+          icon="post"
+          type={IconType.STANDARD}
+          size={IconSize.SMALL}
+        />
+      </span>
+      <section slot="body">
+        {
+          post.data.heroImage && (
+            <a href={post.data.heroImage} target="_blank">
+              <img
+                class="slds-align_absolute-center slds-m-bottom_large hero-image"
+                src={post.data.heroImage}
+                alt="Blog post hero image"
+                width="100%"
+                height="100%"
+              />
+            </a>
+          )
+        }
+        <PostTile
+          pubDate={post.data.pubDate}
+          updatedDate={post.data.updatedDate}
+          tags={post.data.tags}
+        />
+        <hr />
+        <div class="blog-content">
+          <Content />
+        </div>
+      </section>
+    </CardArticle>
+  </div>
 </BaseLayout>
 
 <style is:inline>
