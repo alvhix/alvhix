@@ -3,8 +3,8 @@ title: 'Remove Nth node from end of linked list'
 description: 'A classic linked list problem that can be resolved with the two-pointer technique.'
 pubDate: 'Oct 07 2025'
 updatedDate: 'Oct 07 2025'
-heroImage: '/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list.jpg'
-draft: true
+heroImage: '/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list.drawio.svg'
+draft: false
 tags:
   - 'algorithms'
   - 'two-pointer'
