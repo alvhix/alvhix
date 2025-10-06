@@ -16,13 +16,20 @@ tags:
 
 Given the head of a linked list, remove the n-th node from the end of the list and return its head.
 
+Constraints:
+
+- The number of nodes in the list is sz.
+- 1 <= sz <= 30
+- 0 <= Node.val <= 100
+- 1 <= n <= sz
+
+# Solution
+
 This problem can be solved in a single pass using the two-pointer technique. The two-pointer technique involves using two pointers to traverse the linked list at different speeds or with a specific distance between them. This approach is particularly useful for problems that require finding elements relative to the end of the list, such as removing the n-th node from the end.
 
 ![Introduction](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-introduction.svg 'Introduction - Remove the n-th node from the end of the list')
 
 Red is the fast pointer and blue is the slow pointer.
-
-# Solution
 
 Let's break down the solution into clear steps, starting from the happy path where the list has more than `n` nodes.
 
