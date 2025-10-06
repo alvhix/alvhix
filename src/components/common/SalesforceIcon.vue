@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IconSize, IconType } from '@/scripts/types';
+import type { IconSize, IconType } from '@/types';
 import { defineProps } from 'vue';
 
 defineProps<{

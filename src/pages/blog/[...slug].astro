@@ -5,11 +5,11 @@ import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon from '@components/common/SalesforceIcon.vue';
 import PostTile from '@components/common/PostTile.vue';
 import BaseLayout from '@layout/BaseLayout.astro';
-import { IconSize, IconType } from '@/scripts/types';
+import { IconSize, IconType } from '@/types';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((post) => ({
+  return posts.map((post: CollectionEntry<'blog'>) => ({
     params: { slug: post.slug },
     props: post,
   }));

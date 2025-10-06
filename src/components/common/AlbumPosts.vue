@@ -11,15 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import AlbumTags from '@/components/common/AlbumTags.vue';
+import AlbumTags from '@components/common/AlbumTags.vue';
 import PostCard from '@components/common/PostCard.vue';
 import { onMounted, ref } from 'vue';
 import {
   getPostsUndrafted,
   getPostsUndraftedByActiveTags,
   sortByDescendingPubDate,
-} from '@scripts/global';
-import type { Post } from '@scripts/types';
+} from '@utils/posts';
+import type { Post } from '@/types';
 
 const posts = ref<Post[]>([]);
 const tags = ref<string[]>([]);

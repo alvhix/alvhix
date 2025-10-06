@@ -1,12 +1,6 @@
-import type { InferEntrySchema } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-export interface Post {
-  id: string;
-  slug: string;
-  body: string;
-  collection: string;
-  data: InferEntrySchema<'blog'>;
-}
+export type Post = CollectionEntry<'blog'>;
 
 export enum DeviceType {
   MOBILE = 'mobile',

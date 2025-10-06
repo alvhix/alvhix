@@ -14,9 +14,16 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layout/*": ["src/layouts/*"],
-      "@scripts/*": ["src/scripts/*"]
+      "@utils/*": ["src/utils/*"],
+      "@types/*": ["src/types/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue", "src/**/*.astro"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/**/*.astro",
+    "src/components.d.ts"
+  ],
   "exclude": ["node_modules/", "dist/"]
 }

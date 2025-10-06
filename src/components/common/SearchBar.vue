@@ -99,8 +99,8 @@ import SalesforceIcon from './SalesforceIcon.vue';
 import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
 import { ref } from 'vue';
-import { getPostsUndrafted, sortByDescendingPubDate } from '@scripts/global';
-import { DeviceType, type Post, IconType, IconSize } from '@/scripts/types';
+import { getPostsUndrafted, sortByDescendingPubDate } from '@utils/posts';
+import { DeviceType, type Post, IconType, IconSize } from '@/types';
 
 const props = defineProps<{
   deviceType: DeviceType;
