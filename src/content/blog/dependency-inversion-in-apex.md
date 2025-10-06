@@ -14,7 +14,7 @@ tags:
 
 # Basics
 
-Dependency inversion is the fifth of the SOLI**D** principles. It promotes a loose coupling between components making our system more flexible and testable. It is considered one of the most important principles in architecture levels.
+Dependency inversion is the fifth of the SOLI**D** principles. It promotes loose coupling between components making our system more flexible and testable. It is considered one of the most important principles in architecture levels.
 
 > A high level module should not depend on a low level module. Both should depend on abstractions.
 
@@ -133,16 +133,34 @@ A dependency injection framework usually consists on two parts:
 
    At the end, by passing an interface to the dependency injection framework we will get the correct implementation.
 
-   Note that now the implementation class and the interface are hardcoded in our Apex code, but it can be easily upgraded to rely on a Custom Metadata Type which gives the possibility to change dependencies at run-time directly in your SF org and use it as a Feature Flag.
+   Note that now the implementation class and the interface are hardcoded in our Apex code, but it can be easily upgraded to rely on a Custom Metadata Type which gives the possibility to change dependencies at run-time directly in your SF org and use it as a Feature Flag. See here the example:
+
+   ```apex
+   public class Application {
+       // Replace above hardcoded implementation with a Custom Metadata Type
+         public static final fflib_Application.ServiceFactory Service = new fflib_Application.ServiceFactory(
+           new Map<Type, Type>{
+               IAccountService.class => (Type) Type.forName(
+                   ApplicationMapping__mdt.getInstance('AccountServiceMapping').Implementation_Class__c
+               )
+           }
+       );
+   }
+   ```
 
    For example, imagine that you want to deploy a new version of your service class, you would deploy a second new version with a different class name set up the same mapping in the CMT and start using it. If you want to rollback to the previous version of your class it would be as easy as changing the implementation class in the CMT.
 
 # Conclusions
 
-In conclusion, this technique will make your code be more flexible and scalable in the long term. The potential of the idea behind flexibility is so huge, take advantadge of it.
+In conclusion, this technique will make your code be more flexible and scalable in the long term. The potential of the idea behind flexibility is so huge, take advantage of it. When implemented correctly, it enables:
+
+- Easy feature toggling through Custom Metadata Types
+- Simplified unit testing with mock implementations
+- Better separation of concerns
+- Gradual refactoring capabilities
 
 | Pros                              | Cons                                                                     |
 | --------------------------------- | ------------------------------------------------------------------------ |
 | Loose coupling between components | More complexity due to the abstraction layer                             |
-| Improve testability in unit tests | More prune to undetected runtime exceptions if not correctly unit tested |
+| Improve testability in unit tests | More prone to undetected runtime exceptions if not correctly unit tested |
 | Use as a feature flag             |                                                                          |
