@@ -3,7 +3,7 @@ title: 'Remove Nth node from end of linked list'
 description: 'A classic linked list problem that can be resolved with the two-pointer technique.'
 pubDate: 'Oct 07 2025'
 updatedDate: 'Oct 07 2025'
-heroImage: '/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list.drawio.svg'
+heroImage: '/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list.drawio.svg'
 draft: false
 tags:
   - 'algorithms'
@@ -27,7 +27,7 @@ Constraints:
 
 This problem can be solved in a single pass using the two-pointer technique. The two-pointer technique involves using two pointers to traverse the linked list at different speeds or with a specific distance between them. This approach is particularly useful for problems that require finding elements relative to the end of the list, such as removing the n-th node from the end.
 
-![Introduction](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-introduction.svg 'Introduction - Remove the n-th node from the end of the list')
+![Introduction](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-introduction.svg 'Introduction - Remove the n-th node from the end of the list')
 
 Red is the fast pointer and blue is the slow pointer.
 
@@ -37,19 +37,19 @@ Let's break down the solution into clear steps, starting from the happy path whe
 
 Fast pointer will advance `n` steps ahead. Note that when `n` is equal to the length of the list, the fast pointer will be `null`
 
-![Step 1](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
+![Step 1](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
 
 ## Step 2
 
 The slow pointer will start from the head and both pointers will advance one step at a time until the fast pointer reaches the end of the list. If we are already in the end of the list, it means we have to remove the head node.
 
-![Step 2](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-2.svg 'Step 2 - Slow pointer advances n steps ahead')
+![Step 2](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-2.svg 'Step 2 - Slow pointer advances n steps ahead')
 
 ## Step 3
 
 At this point, the slow pointer will be at the node just before the one we want to remove. We can then adjust the `next` pointer of the slow pointer to skip the target node. The orphaned node will be removed by the garbage collector of your programming language, or you can manually free the memory if needed.
 
-![Step 3](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-3.svg 'Step 3 - Remove the target node')
+![Step 3](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-step-3.svg 'Step 3 - Remove the target node')
 
 ---
 
@@ -57,7 +57,7 @@ Until here we have covered the happy path, but there are some edge cases that we
 
 # If `n` is equal to the length of the list, we need to remove the head node.
 
-![N is equal to legnth of the list](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1.svg 'Edge case')
+![N is equal to legnth of the list](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1.svg 'Edge case')
 
 Let's repeat the steps for this edge case:
 
@@ -65,19 +65,19 @@ Let's repeat the steps for this edge case:
 
 Fast pointer will advance `n` steps ahead. Note that when `n` is equal to the length of the list, the fast pointer will be `null` because we have reached the end of the list.
 
-![Step 1](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
+![Step 1](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
 
 ## Step 2
 
 Fast pointer is already at the end of the list (is `null`), so we just need to remove the head node, no need to move the slow pointer.
 
-![Step 2](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1-step-2.svg 'Step 2 - Remove the head node')
+![Step 2](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-1-step-2.svg 'Step 2 - Remove the head node')
 
 ---
 
 # If the list has only one node and `n` is 1, we need to return `null`.
 
-![N is equal to legnth of the list](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2.svg 'Edge case')
+![N is equal to legnth of the list](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2.svg 'Edge case')
 
 Let's repeat the steps for this edge case:
 
@@ -85,17 +85,17 @@ Let's repeat the steps for this edge case:
 
 Fast pointer will advance `n` steps ahead. Note that when `n` is equal to the length of the list, the fast pointer will be `null` because we have reached the end of the list.
 
-![Step 1](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
+![Step 1](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2-step-1.svg 'Step 1 - Fast pointer advances n steps ahead')
 
 ## Step 2
 
 Fast pointer is already at the end of the list (is `null`), so we just need to remove the head node, no need to move the slow pointer.
 
-![Step 2](/images/remote-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2-step-2.svg 'Step 2 - Remove the head node')
+![Step 2](/images/remove-nth-node-from-end-of-linked-list/remove-nth-node-from-end-of-list-edge-case-2-step-2.svg 'Step 2 - Remove the head node')
 
 In both edge cases, we are taking the `head.next` as the new head of the list.
 
-# Typescript implementation
+# Code
 
 ```typescript
 /**
