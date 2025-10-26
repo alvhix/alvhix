@@ -34,21 +34,25 @@ Having the two pointers at the head of the linked list. If fast is not null and 
 ## Step 1
 
 Add a temporal pointer `prev` that will store `slow`
+
 ![Step 1](/images/reverse-linked-list/reverse-linked-list.step-1.svg 'Step 1 - Reverse a linked list')
 
 ## Step 2
 
 The `slow` pointer will be now pointing the next fast node
+
 ![Step 2](/images/reverse-linked-list/reverse-linked-list.step-2.svg 'Step 2 - Reverse a linked list')
 
 ## Step 3
 
 Advance the next fast node to the next node
+
 ![Step 3](/images/reverse-linked-list/reverse-linked-list.step-3.svg 'Step 3 - Reverse a linked list')
 
 ## Step 4
 
 Finally, the slow next node will be the `prev` pointer
+
 ![Step 4](/images/reverse-linked-list/reverse-linked-list.step-4.svg 'Step 4 - Reverse a linked list')
 
 Repeat the steps until `fast` is null (for linked lists with n = 0) OR `fast.next` is null (for linked lists with n >= 1)
