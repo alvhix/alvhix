@@ -4,7 +4,7 @@ description: 'Swap every two adjacent nodes in a linked list and return its head
 pubDate: 'Oct 28 2025'
 updatedDate: 'Oct 28 2025'
 heroImage: '/images/swap-nodes-in-pairs/swap-nodes-in-pairs.drawio.svg'
-draft: true
+draft: false
 tags:
   - 'algorithms'
   - 'two-pointer'
