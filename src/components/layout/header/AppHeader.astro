@@ -3,6 +3,10 @@ import SearchBar from '@components/common/SearchBar.vue';
 import HeaderLink from '@components/layout/header/HeaderLink.astro';
 import HeaderLinkMobile from '@components/layout/header/HeaderLinkMobile.astro';
 import { DeviceType } from '@/types';
+import { getAllPosts } from '@utils/posts';
+import { sortByDescendingPubDate } from '@utils/posts';
+
+const posts = sortByDescendingPubDate(await getAllPosts());
 ---
 
 <header class="header">
@@ -32,6 +36,7 @@ import { DeviceType } from '@/types';
         client:load
         deviceType={DeviceType.DESKTOP}
         dropdownEnabled={true}
+        posts={posts}
       />
     </nav>
     <nav
@@ -42,6 +47,7 @@ import { DeviceType } from '@/types';
         client:load
         deviceType={DeviceType.MOBILE}
         dropdownEnabled={true}
+        posts={posts}
       />
     </nav>
     <nav

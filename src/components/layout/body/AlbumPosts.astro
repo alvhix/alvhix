@@ -1,0 +1,36 @@
+---
+import AlbumTags from '@components/common/AlbumTags.vue';
+import PostCard from '@components/common/PostCard.vue';
+import {
+  getAllPosts,
+  getAllPostsByTags,
+  sortByDescendingPubDate,
+} from '@utils/posts';
+
+const fetchedPosts = await getAllPosts();
+const tags = Array.from(
+  new Set(fetchedPosts.map((post) => post.data.tags).flat())
+);
+
+let posts = await getAllPosts();
+posts = sortByDescendingPubDate([...posts]);
+
+async function getPostsByActiveTags(activeTags: string[]) {
+  const hasActiveTags = activeTags.length === 0;
+  const result = hasActiveTags
+    ? await getAllPosts()
+    : await getAllPostsByTags(activeTags);
+
+  return sortByDescendingPubDate([...result]);
+}
+---
+
+<div class="tags">
+  <AlbumTags tags={tags} onTagSelected={getPostsByActiveTags} />
+</div>
+
+<hr />
+
+<ul class="slds-grid slds-wrap">
+  {posts.map((post) => <PostCard post={post} />)}
+</ul>
