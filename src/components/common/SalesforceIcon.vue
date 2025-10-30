@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import type { IconSize, IconType } from '@/types';
-import { defineProps } from 'vue';
 
 defineProps<{
   icon: string;

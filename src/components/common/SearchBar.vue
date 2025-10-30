@@ -71,7 +71,7 @@
                     <span class="slds-media__body">
                       <article class="slds-tile">
                         <h3
-                          class="slds-tile__title slds-truncate"
+                          class="slds-tile__title slds-line-clamp"
                           :title="result.data.title"
                         >
                           {{ result.data.title }}
@@ -98,13 +98,13 @@
 import SalesforceIcon from './SalesforceIcon.vue';
 import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
-import { ref } from 'vue';
-import { getPostsUndrafted, sortByDescendingPubDate } from '@utils/posts';
+import { ref, onMounted } from 'vue';
 import { DeviceType, type Post, IconType, IconSize } from '@/types';
 
 const props = defineProps<{
   deviceType: DeviceType;
   dropdownEnabled: boolean;
+  posts: Post[];
 }>();
 
 const maxNumberOfResults: number = 5;
@@ -124,9 +124,13 @@ const fuseOptions: object = {
   // ignoreFieldNorm: false,
   // fieldNormWeight: 1,
 };
-const posts = sortByDescendingPubDate(await getPostsUndrafted());
-const fuse: Fuse<Post> = new Fuse(posts, fuseOptions);
+
 const results = ref<Post[]>([]);
+let fuse: Fuse<Post>;
+
+onMounted(() => {
+  fuse = new Fuse(props.posts, fuseOptions);
+});
 
 const handleSearch = (event: Event) => {
   const inputElement: HTMLInputElement = <HTMLInputElement>event.target;
