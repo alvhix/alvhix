@@ -34,8 +34,10 @@
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.8.1"
   },
-  "resolutions": {
-    "rollup": "npm:@rollup/wasm-node"
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.52.5",
+    "@rollup/rollup-win32-x64-msvc": "4.52.5",
+    "@rollup/rollup-darwin-x64": "4.52.5"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint --cache --fix",
