@@ -6,14 +6,15 @@ import AppFooter from '@components/layout/footer/AppFooter.astro';
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={image} />
   </head>
   <body>
     <AppHeader />
