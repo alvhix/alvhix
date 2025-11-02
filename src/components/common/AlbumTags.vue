@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const { tags } = defineProps({
   tags: {
@@ -33,16 +33,20 @@ onMounted(() => {
   emit('tag-selected', activeTags.value);
 });
 
-onUnmounted(() => {
-  sessionStorage.setItem('activeTags', JSON.stringify(activeTags.value));
-});
+watch(
+  activeTags,
+  (newTags) => {
+    sessionStorage.setItem('activeTags', JSON.stringify(newTags));
+  },
+  { deep: true }
+);
 
 const emit = defineEmits(['tag-selected']);
 
 const isActiveTag = (tag: string) => activeTags.value.includes(tag);
 
 const toggleTag = (event: MouseEvent) => {
-  const tagNode = event.target as HTMLElement;
+  const tagNode = event.currentTarget as HTMLElement | null;
   const tag = tagNode?.dataset.tag;
 
   toggleActiveTag(tag);

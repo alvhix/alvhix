@@ -1,12 +1,15 @@
 ---
-import AlbumPosts from '@/components/layout/body/AlbumPosts.astro';
 import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon from '@components/common/SalesforceIcon.vue';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { IconSize, IconType } from '@/types';
+import AlbumPosts from '@/components/layout/body/AlbumPosts.vue';
+import { getAllPosts } from '@/utils/posts';
 
 const TITLE: string = 'Blog';
 const DESCRIPTION: string = 'All posts';
+
+const posts = await getAllPosts();
 ---
 
 <BaseLayout title={TITLE} description={DESCRIPTION}>
@@ -26,7 +29,7 @@ const DESCRIPTION: string = 'All posts';
         />
       </span>
       <div slot="body">
-        <AlbumPosts />
+        <AlbumPosts posts={posts} client:load />
       </div>
     </CardArticle>
   </div>
