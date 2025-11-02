@@ -41,7 +41,7 @@ export async function getAllPosts(): Promise<Post[]> {
       });
   }
 
-  const posts: Post[] = await loadingPromise!;
+  const posts: Post[] = await loadingPromise;
   return sortByDescendingPubDate([...posts]);
 }
 
