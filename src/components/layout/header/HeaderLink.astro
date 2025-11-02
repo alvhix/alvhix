@@ -6,17 +6,27 @@ interface Props {
   href: string;
   title: string;
   icon: string;
+  mobile?: boolean;
 }
-const { href, title, icon } = Astro.props;
+const { href, title, icon, mobile = false } = Astro.props;
 
 const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
-<li class:list={['slds-context-bar__item', { 'slds-is-active': isActive }]}>
+<li
+  class:list={[
+    mobile ? 'slds-tabs-mobile__item' : 'slds-context-bar__item',
+    { 'slds-is-active': isActive }
+  ]}
+>
   <a
     href={href}
-    class="slds-context-bar__label-action slds-text-heading_x-small"
+    class:list={[
+      'slds-context-bar__label-action',
+      'slds-text-heading_x-small',
+      { 'slds-align_absolute-center': mobile }
+    ]}
     title={title}
     role="tab"
     aria-selected={isActive}
