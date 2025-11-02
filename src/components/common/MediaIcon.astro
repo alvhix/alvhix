@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+const title = name.replace('.svg', '') + ' icon';
+---
+
+<span class="slds-icon">
+  <img src={`/svg/${name}`} width="100%" height="100%" alt={title} />
+  <span class="slds-assistive-text">{title}</span>
+</span>

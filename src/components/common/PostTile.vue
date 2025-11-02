@@ -27,7 +27,7 @@
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Created at">
             <span class="date">
-              <FormattedDate :date="pubDate" />
+              {{ formatDate(pubDate) }}
             </span>
           </dd>
         </template>
@@ -40,7 +40,7 @@
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Updated at">
             <span class="date">
-              <FormattedDate :date="updatedDate" />
+              {{ formatDate(updatedDate) }}
             </span>
           </dd>
         </template>
@@ -67,7 +67,6 @@
 </template>
 
 <script setup>
-import FormattedDate from '@components/common/FormattedDate.vue';
 const { title, description, pubDate, updatedDate, tags } = defineProps({
   title: String,
   description: String,
@@ -75,6 +74,15 @@ const { title, description, pubDate, updatedDate, tags } = defineProps({
   updatedDate: Date,
   tags: Array,
 });
+
+function formatDate(date) {
+  if (!date) return '';
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+}
 </script>
 
 <style scoped>

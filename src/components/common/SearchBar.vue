@@ -79,7 +79,7 @@
                         <span
                           class="slds-listbox__option-meta slds-listbox__option-meta_entity"
                         >
-                          <FormattedDate :date="result.data.pubDate" />
+                          {{ formatDate(result.data.pubDate) }}
                         </span>
                       </article>
                     </span>
@@ -96,7 +96,6 @@
 
 <script setup lang="ts">
 import SalesforceIcon from './SalesforceIcon.vue';
-import FormattedDate from '@components/common/FormattedDate.vue';
 import Fuse from 'fuse.js';
 import { ref, onMounted } from 'vue';
 import { DeviceType, type Post, IconType, IconSize } from '@/types';
@@ -112,17 +111,6 @@ const fuseOptions: object = {
   minMatchCharLength: 2,
   threshold: 0.5,
   keys: ['data.title', 'body'],
-  // isCaseSensitive: false,
-  // includeScore: false,
-  // shouldSort: true,
-  // includeMatches: false,
-  // findAllMatches: false,
-  // location: 0,
-  // distance: 100,
-  // useExtendedSearch: false,
-  // ignoreLocation: false,
-  // ignoreFieldNorm: false,
-  // fieldNormWeight: 1,
 };
 
 const results = ref<Post[]>([]);
@@ -153,6 +141,14 @@ const query = (searchPattern: string) => {
     .search(searchPattern)
     .map((result) => result.item)
     .slice(0, maxNumberOfResults);
+};
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 };
 </script>
 

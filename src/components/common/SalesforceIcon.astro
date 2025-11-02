@@ -1,0 +1,25 @@
+---
+import type { IconSize, IconType } from '@/types';
+
+interface Props {
+  icon: string;
+  type: IconType;
+  size: IconSize;
+  colored?: boolean;
+}
+
+const { icon, type, size, colored = false } = Astro.props;
+---
+
+<svg
+  class:list={[
+    'slds-icon',
+    `slds-icon_${size}`,
+    { 'slds-icon-text-default': colored }
+  ]}
+  aria-hidden="true"
+>
+  <title>{`${icon} ${type} icon`}</title>
+  <use href={`/svg/${type}.svg#${icon}`}></use>
+</svg>
+<span class="slds-assistive-text">{icon + ' icon'}</span>
