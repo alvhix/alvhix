@@ -69,11 +69,8 @@
                       </span>
                     </span>
                     <span class="slds-media__body">
-                      <article class="slds-tile">
-                        <h3
-                          class="slds-tile__title slds-line-clamp"
-                          :title="result.data.title"
-                        >
+                      <article class="slds-tile slds-truncate">
+                        <h3 class="slds-tile__title" :title="result.data.title">
                           {{ result.data.title }}
                         </h3>
                         <span
