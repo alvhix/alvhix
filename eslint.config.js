@@ -28,7 +28,7 @@ export default [
     files: ['**/*.vue'],
     languageOptions: {
       parserOptions: {
-        parser: '@typescript-eslint/parser',
+        parser: tseslint.parser,
         ecmaVersion: 'latest',
         sourceType: 'module',
       },

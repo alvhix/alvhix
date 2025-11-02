@@ -19,7 +19,7 @@
       }
     },
     {
-      "files": "*.vue",
+      "files": ["*.vue"],
       "options": {
         "parser": "vue"
       }
