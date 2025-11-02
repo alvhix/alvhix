@@ -30,6 +30,9 @@ export async function getAllPosts(): Promise<Post[]> {
     ).then((posts) => {
       cachedPosts = posts;
       return posts;
+    }).catch((err) => {
+      loadingPromise = null;
+      throw err;
     });
   }
 
