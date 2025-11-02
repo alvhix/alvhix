@@ -21,7 +21,11 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.heroImage}
+>
   <div
     class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_6-of-12"
   >

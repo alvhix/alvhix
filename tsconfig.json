@@ -23,8 +23,8 @@
     "src/**/*.d.ts",
     "src/**/*.vue",
     "src/**/*.astro",
-    "src/components.d.ts", 
-    "env.d.ts"  
+    "src/components.d.ts",
+    "src/env.d.ts"
   ],
   "exclude": ["node_modules/", "dist/"]
 }
