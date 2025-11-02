@@ -22,8 +22,8 @@ export async function getAllPosts(): Promise<Post[]> {
   }
 
   if (cachedPosts) {
-    // Return a shallow copy to avoid accidental external mutation
-    return [...cachedPosts];
+    // Return a shallow copy to avoid accidental external mutation, sorted
+    return sortByDescendingPubDate([...cachedPosts]);
   }
 
   if (!loadingPromise) {
