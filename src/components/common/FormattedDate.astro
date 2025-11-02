@@ -14,4 +14,4 @@ const formattedDate = date
   : '';
 ---
 
-<time datetime={date?.toISOString()}>{formattedDate}</time>
+<time datetime={date?.toISOString() ?? undefined}>{formattedDate}</time>

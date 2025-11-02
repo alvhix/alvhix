@@ -4,7 +4,7 @@
     aria-hidden="true"
   >
     <title>{{ `${icon} ${type} icon` }}</title>
-    <use :href="`/svg/${type}.svg#${icon}`"></use>
+    <use :xlink:href="`/svg/${type}.svg#${icon}`"></use>
   </svg>
   <span class="slds-assistive-text">{{ icon + ' icon' }}</span>
 </template>

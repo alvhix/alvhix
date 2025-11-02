@@ -71,8 +71,8 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
           </dt>
           <dd class="slds-item_detail slds-truncate" title="Tags">
             <span class="slds-listbox__option-text slds-listbox__option-text_entity">
-              {tags.map((tag) => (
-                <span class="slds-badge">#{tag}</span>
+              {tags.map((tag, index) => (
+                <span key={index} class="slds-badge">#{tag}</span>
               ))}
             </span>
           </dd>
