@@ -5,7 +5,7 @@ import type { Post } from '../types';
 const isDevelopment = import.meta.env.DEV;
 
 /**
- * Gets all non-draft posts (or all posts in development mode)
+ * Gets all non-draft posts
  * @returns Array of posts
  */
 // Simple module-level cache to avoid repeated getCollection calls during a build.
@@ -15,7 +15,10 @@ let loadingPromise: Promise<Post[]> | null = null;
 
 export async function getAllPosts(): Promise<Post[]> {
   if (isDevelopment) {
-    return await getCollection('blog');
+    return await getCollection(
+      'blog',
+      ({ data }: CollectionEntry<'blog'>) => !data.draft
+    );
   }
 
   if (cachedPosts) {
@@ -27,13 +30,15 @@ export async function getAllPosts(): Promise<Post[]> {
     loadingPromise = getCollection(
       'blog',
       ({ data }: CollectionEntry<'blog'>) => !data.draft
-    ).then((posts) => {
-      cachedPosts = posts;
-      return posts;
-    }).catch((err) => {
-      loadingPromise = null;
-      throw err;
-    });
+    )
+      .then((posts) => {
+        cachedPosts = posts;
+        return posts;
+      })
+      .catch((err) => {
+        loadingPromise = null;
+        throw err;
+      });
   }
 
   const posts = await loadingPromise;
