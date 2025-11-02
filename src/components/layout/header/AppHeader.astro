@@ -1,7 +1,6 @@
 ---
 import SearchBar from '@components/common/SearchBar.vue';
 import HeaderLink from '@components/layout/header/HeaderLink.astro';
-import HeaderLinkMobile from '@components/layout/header/HeaderLinkMobile.astro';
 import { DeviceType } from '@/types';
 import { getAllPosts } from '@utils/posts';
 
@@ -85,9 +84,9 @@ const posts = await getAllPosts();
     class="slds-tabs-mobile__container slds-hide slds-hide_medium"
   >
     <ul class="slds-tabs-mobile">
-      <HeaderLinkMobile href="/" title="Home" icon="home" />
-      <HeaderLinkMobile href="/blog" title="Blog" icon="share_post" />
-      <HeaderLinkMobile href="/about" title="About" icon="user" />
+      <HeaderLink href="/" title="Home" icon="home" mobile={true} />
+      <HeaderLink href="/blog" title="Blog" icon="share_post" mobile={true} />
+      <HeaderLink href="/about" title="About" icon="user" mobile={true} />
     </ul>
   </div>
 </header>
