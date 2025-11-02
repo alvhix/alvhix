@@ -3,12 +3,25 @@
   "tabWidth": 2,
   "semi": true,
   "singleQuote": true,
+  "printWidth": 80,
   "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {
       "files": "*.astro",
       "options": {
         "parser": "astro"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": "*.vue",
+      "options": {
+        "parser": "vue"
       }
     }
   ]

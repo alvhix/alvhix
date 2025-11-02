@@ -13,6 +13,7 @@ export async function getAllPosts(): Promise<Post[]> {
   );
 
   return posts.sort(
-    (a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a: { data: { pubDate: number } }, b: { data: { pubDate: number } }) =>
+      b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 }
