@@ -11,8 +11,8 @@ export async function getAllPosts(): Promise<Post[]> {
     'blog',
     ({ data }: CollectionEntry<'blog'>) => !data.draft
   );
-  
+
   return posts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
   );
 }

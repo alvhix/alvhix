@@ -7,7 +7,7 @@
     <hr />
 
     <ul class="slds-grid slds-wrap">
-      <PostCard v-for="post in visiblePosts" :key="post.id" :post="post" />
+      <AlbumPostCard v-for="post in visiblePosts" :key="post.id" :post="post" />
     </ul>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import AlbumTags from '@components/common/AlbumTags.vue';
-import PostCard from '@components/common/PostCard.vue';
+import AlbumPostCard from '@/components/common/AlbumPostCard.vue';
 import type { Post } from '@/types';
 
 const props = defineProps<{
