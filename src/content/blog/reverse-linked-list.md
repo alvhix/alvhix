@@ -3,7 +3,7 @@ title: 'Reverse a linked list'
 description: 'Reverse a linked list with the two-pointer technique iteratively.'
 pubDate: 'Oct 11 2025'
 updatedDate: 'Oct 11 2025'
-heroImage: '/images/reverse-linked-list/reverse-linked-list.drawio.svg'
+heroImage: '/images/reverse-linked-list/reverse-linked-list.drawio.png'
 draft: false
 tags:
   - 'algorithms'
