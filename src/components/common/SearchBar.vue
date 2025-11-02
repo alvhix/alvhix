@@ -99,6 +99,7 @@ import SalesforceIcon from './SalesforceIcon.vue';
 import Fuse from 'fuse.js';
 import { ref, onMounted } from 'vue';
 import { DeviceType, type Post, IconType, IconSize } from '@/types';
+import { formatDate } from '@/utils/formatDate';
 
 const props = defineProps<{
   deviceType: DeviceType;
@@ -141,14 +142,6 @@ const query = (searchPattern: string) => {
     .search(searchPattern)
     .map((result) => result.item)
     .slice(0, maxNumberOfResults);
-};
-
-const formatDate = (date: Date) => {
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
 };
 </script>
 

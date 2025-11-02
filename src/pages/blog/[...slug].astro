@@ -3,7 +3,7 @@ import { type CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import CardArticle from '@components/layout/body/CardArticle.astro';
 import SalesforceIcon from '@components/common/SalesforceIcon.astro';
-import PostTile from '@components/common/PostTile.astro';
+import PostTile from '@components/common/PostTile.vue';
 import BaseLayout from '@layout/BaseLayout.astro';
 import { IconSize, IconType } from '@/types';
 
@@ -56,6 +56,7 @@ const { Content } = await post.render();
           )
         }
         <PostTile
+          client:load
           pubDate={post.data.pubDate}
           updatedDate={post.data.updatedDate}
           tags={post.data.tags}
