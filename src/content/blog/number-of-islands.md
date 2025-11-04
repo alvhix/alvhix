@@ -14,9 +14,9 @@ tags:
 
 # Problem statement
 
-Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+Given an m x n 2D binary grid which represents a map of '1's (land) and '0's (water), return the number of islands.
 
-An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+An island is surrounded by water and is formed by connecting adjacent land cells horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
 Constraints:
 
@@ -29,13 +29,13 @@ grid[i][j] is '0' or '1'.
 
 # Solution
 
-To solve this problem we need to loop through the bidimensional array, and perform a Bread-First Search on each land, increasing the number of islands counter. In the BFS we are going to search and mark as visited all the adyacent nodes, vertically or horizontally so they can be considered as part of the same island. Once they are no more adyacent land, start again until we have traversed the entire grid. As usual, it can be resolved iteratively or recursive. In this post we are going to focus on the iterative version.
+To solve this problem we need to loop through the two-dimensional array, and perform a Breadth-First Search on each land, increasing the number of islands counter. In the BFS we are going to search and mark as visited all the adjacent nodes, vertically or horizontally so they can be considered as part of the same island. Once there are no more adjacent land cells, start again until we have traversed the entire grid. As usual, it can be resolved iteratively or recursively. In this post we are going to focus on the iterative version.
 
 ## Introduction
 
 We will need:
 
-- A queue to store the indexes (row and column) as a number that we are going to visit using the BFS algorithm
+- A queue to store the indices (row and column) as a number that we are going to visit using the BFS algorithm
 - An integer to represent the counter of the number of islands
 
 ## Step 1
@@ -48,22 +48,22 @@ If we find a '1' land:
 
 - Increment number of islands counter
 - Mark as visited by modifying the grid value to water '0'
-- Enqueue the current node index by the formula `row * NUMBER_OF_COLUMNS + columns`. We will parse this index later like this:
-  - row: `index / NUMBER_OF_COLUMNS`
+- Enqueue the current node index by the formula `row * NUMBER_OF_COLUMNS + column`. We will parse this index later like this:
+  - row: `Math.floor(index / NUMBER_OF_COLUMNS)`
   - column: `index % NUMBER_OF_COLUMNS`
 
-## Step 3 (Optional)
+## Step 3
 
 If the queue is not empty, perform a Breadth-First Search
 
-1. Search adjacent nodes in all four directions (top, bottom, right, left):
+1. Search adjacent nodes in all four directions (bottom, right, left, top):
 
 - Right: `(row, column + 1)`
 - Bottom: `(row + 1, column)`
 - Left: `(row, column - 1)`
 - Top: `(row - 1, column)`
 
-![Adyacent nodes](/images/number-of-islands/number-of-islands.adyacent-nodes.svg 'Adyacent nodes')
+![Adjacent nodes](/images/number-of-islands/number-of-islands.adjacent-nodes.svg 'Adjacent nodes')
 
 For each adjacent node:
 
@@ -74,11 +74,11 @@ For each adjacent node:
 
 3. At the end of the iteration, dequeue the head
 
-![Step 2](/images/number-of-islands/number-of-islands.step-3-1.svg 'Step 3.1')
+![Step 3.1](/images/number-of-islands/number-of-islands.step-3-1.svg 'Step 3.1')
 
-![Step 3](/images/number-of-islands/number-of-islands.step-3-2.svg 'Step 3.2')
+![Step 3.2](/images/number-of-islands/number-of-islands.step-3-2.svg 'Step 3.2')
 
-Run BFS iteratively, adding the index to the queue and marking as visited until the queue is empty, with this approach we will mark all the adyacent lands as visited for the current island. Once we finish the BFS, we go back to step 1 and continue traversing the grid until we find another land '1' to start a new island count.
+Run BFS iteratively, adding the index to the queue and marking as visited until the queue is empty, with this approach we will mark all the adjacent land cells as visited for the current island. Once we finish the BFS, we go back to step 1 and continue traversing the grid until we find another land '1' to start a new island count.
 
 ![Rest of steps](/images/number-of-islands/number-of-islands.all-steps.svg 'Rest of steps')
 
@@ -121,7 +121,7 @@ export function numIslands(grid: string[][]): number {
   const queue = new Queue<number>(COLUMNS * ROWS);
   let numberOfIslands = 0;
 
-  // step 1: loop trough the matrix
+  // step 1: loop through the matrix
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLUMNS; j++) {
       // step 2: find '1's lands
@@ -154,7 +154,7 @@ export function numIslands(grid: string[][]): number {
         const row = Math.floor(node / COLUMNS);
         const column = node % COLUMNS;
 
-        // search adyacent nodes
+        // search adjacent nodes
         fill(row, column + 1); // right
         fill(row + 1, column); // bottom
         fill(row, column - 1); // left
