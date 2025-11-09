@@ -37,4 +37,12 @@ const { post } = defineProps({ post: { required: true } });
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition-delay: 0.1s;
 }
+
+.hero-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 4px;
+}
 </style>
