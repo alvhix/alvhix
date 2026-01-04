@@ -1,45 +1,79 @@
-<h1 align="center">Hi there 👋, I'm Álvaro Fernández</h1>
+<!-- Header -->
+<div align="center">
+  <h1>alvhix</h1>
+  <p>Software Engineer | Tech Blogger | Problem Solver</p>
+</div>
 
-<h2>About me</h2>
+<br/>
 
-<p>
-  Hello, I'm <strong>Álvaro Fernández</strong>, a Software Engineer with a focus on backend development.
-  <img src="https://media.giphy.com/media/2hna1X2GUISud89rut/giphy.gif" align="right" width="120px" style="margin-left:15px;" />
-</p>
+<!-- About Me -->
 
-<h3 align="center">Technologies</h3>
+## 👨‍💻 About Me
 
-<p align="center">
-  <code style="background:#f0f0f0; padding:4px 8px; border-radius:4px; margin:4px;">NestJS</code>
-  <code style="background:#f0f0f0; padding:4px 8px; border-radius:4px; margin:4px;">TypeScript</code>
-  <code style="background:#f0f0f0; padding:4px 8px; border-radius:4px; margin:4px;">Node.js</code>
-  <code style="background:#f0f0f0; padding:4px 8px; border-radius:4px; margin:4px;">GraphQL</code>
-</p>
+I'm a **Software Engineer** passionate about backend development, cloud technologies, and building scalable systems.
 
-<h2>Stats</h2>
-<table>
-    <tr>
-        <td>
-            <img align="center" src="https://github-readme-stats.vercel.app/api/?username=alvhix&show_icons=true&theme=dark&bg_color=00000000&hide_border=true&icon_color=00000000&count_private=true" />
-        </td>
-        <td>
-            <img align="center" src="https://github-readme-stats.quantumlytangled.vercel.app/api/top-langs/?username=alvhix&layout=compact&show_icons=true&theme=dark&bg_color=00000000&hide_border=true&icon_color=00000000&count_private=true" />
-        </td>
-    </tr>
-</table>
+- 🔭 Currently working on **backend services**
+- 🌱 Learning **algorithms**, **data structures**, and **system design**
+- ✍️ Writing technical articles on my [blog](https://alvhix.com)
+- 💬 Ask me about **TypeScript**, **Node.js**, **NestJS**, or **Salesforce**
+- ⚡ Fun fact: I love solving coding challenges and sharing my knowledge
 
-<h2>Social media</h2>
-<p align="center">
-  <a href="https://www.linkedin.com/in/alvhix/" target="_blank" rel="noopener noreferrer" style="margin: 0 8px;">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="https://stackoverflow.com/users/12567565/alvhix" target="_blank" rel="noopener noreferrer" style="margin: 0 8px;">
-    <img src="https://img.shields.io/badge/StackOverflow-FE7A16?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stack Overflow" />
-  </a>
-  <a href="https://twitter.com/alvhix" target="_blank" rel="noopener noreferrer" style="margin: 0 8px;">
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" />
-  </a>
-  <a href="https://trailblazer.me/id/alvhix" target="_blank" rel="noopener noreferrer" style="margin: 0 8px;">
-    <img src="https://img.shields.io/badge/Trailhead-179BFF?style=for-the-badge&logo=salesforce&logoColor=white" alt="Salesforce Trailhead" />
-  </a>
-</p>
+<br/>
+
+<!-- Tech Stack -->
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+### Languages
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Apex](https://img.shields.io/badge/Apex-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+
+### Backend & Frameworks
+
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+
+### Frontend
+
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Astro](https://img.shields.io/badge/Astro-FF5D01?style=for-the-badge&logo=astro&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+### Cloud & Tools
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)
+![Salesforce](https://img.shields.io/badge/Salesforce-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white)
+
+</div>
+
+<br/>
+
+<!-- Connect With Me -->
+
+## 🤝 Connect With Me
+
+<div align="center">
+  
+[![Website](https://img.shields.io/badge/Website-alvhix.com-1B96FF?style=for-the-badge&logo=google-chrome&logoColor=white)](https://alvhix.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-alvhix-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alvhix/)
+[![X](https://img.shields.io/badge/X-@alvhix-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/alvhix)
+
+</div>
+
+<br/>
+
+<!-- Footer -->
+
+<div align="center">
+  <sub>⭐ From <a href="https://github.com/alvhix">alvhix</a> with ❤️</sub>
+</div>
